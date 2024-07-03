@@ -1,4 +1,3 @@
-import './App.css';
 
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
@@ -11,13 +10,36 @@ import Cart from './pages/Cart';
 import Contact from './pages/Contact';
 import CartProvider from './context/CartContext';
 import LegalPage from './pages/LegalPage';
+import product1 from './img/product1.png';
+import product2 from './img/product2.png';
+
+export const productDict = {
+  product1,
+  product2
+}
+
+// JavaScript to handle scroll event
+window.addEventListener('scroll', () => {
+  const navbar = document.getElementById('navbar');
+  if (window.scrollY > 800){
+    navbar.classList.add('hidden');
+    navbar.classList.remove('scrolled');
+  }
+  else if (window.scrollY > 50) {
+    navbar.classList.add('scrolled');
+    navbar.classList.remove('hidden');
+  } else {
+    navbar.classList.remove('scrolled','hidden');
+    navbar.classList.add('menu-transparent');
+  }
+});
 
 const App = () => {
   return (
     <CartProvider>
       <Router>
         <Header />
-        <main className="flex-grow">
+        <main className="flex-grow mt-12">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />

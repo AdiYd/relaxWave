@@ -1,12 +1,14 @@
 import React from 'react';
 import ProductCard from '../components/ProductCard';
+import product1 from '../img/product1.png';
+import product2 from '../img/product2.png';
 
 const products = [
   {
     id: 1,
     name: 'RelaxWave Massager Pro',
     description: 'Experience the ultimate relaxation with our top-rated massager.',
-    image: '/images/massager1.jpg',
+    image: product1,
     originalPrice: 199.99,
     discountedPrice: 149.99,
   },
@@ -14,7 +16,7 @@ const products = [
     id: 2,
     name: 'RelaxWave Massager Pro',
     description: 'Experience the ultimate relaxation with our top-rated massager.',
-    image: '/images/massager1.jpg',
+    image: product2,
     originalPrice: 199.99,
     discountedPrice: 149.99,
   },
@@ -22,7 +24,7 @@ const products = [
     id: 3,
     name: 'RelaxWave Massager Pro',
     description: 'Experience the ultimate relaxation with our top-rated massager.',
-    image: '/images/massager1.jpg',
+    image: product1,
     originalPrice: 199.99,
     discountedPrice: 149.99,
   },
@@ -30,7 +32,7 @@ const products = [
     id: 4,
     name: 'RelaxWave Massager Pro',
     description: 'Experience the ultimate relaxation with our top-rated massager.',
-    image: '/images/massager1.jpg',
+    image: product2,
     originalPrice: 199.99,
     discountedPrice: 149.99,
   },
@@ -39,10 +41,12 @@ const products = [
 
 const Products = () => {
   return (
-    <div className="p-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-      {products.map(product => (
-        <ProductCard key={product.id} product={product} />
-      ))}
+    <div className="pageContainer">
+      <div className="p-4 flex gap-4 flex-wrap justify-center ">
+        {products?.map(product => (
+          <ProductCard key={product.id} product={product} />
+        ))}
+      </div>
     </div>
   );
 };

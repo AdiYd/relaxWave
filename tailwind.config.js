@@ -7,10 +7,22 @@ module.exports = {
     extend: {
       colors: {
         primary: {
-          light: '#6ba5d7',
-          DEFAULT: '#3a82c4', // This is the dark blue color we'll use as the primary theme color
-          dark: '#2a5a8a',
+          DEFAULT: '#3490dc', // Dark Blue  '#1E3A8A'
+          light: '#93C5FD',   // Light Blue
+          dark: '#152a62',   // Light Blue
         },
+        accent: {
+          DEFAULT: '#38b2ac', // Soft Yellow  '#FDE68A'
+        },
+        neutral: {
+          DEFAULT: '#F3F4F6', // Light Gray for background
+          dark: '#4B5563',    // Dark Gray for text
+        },
+        secondary: '#ffed4a'
+      },
+      fontFamily: {
+        inter: ['Inter', 'sans-serif'],
+        montserrat: ['Montserrat', 'sans-serif'],
       },
     },
   },

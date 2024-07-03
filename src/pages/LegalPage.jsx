@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import legalData from '../assets/json/legal.json';
-import '../index.css';
+import '../style/index.css';
 
 const LegalPage = ({ section }) => {
   const [content, setContent] = useState({});
@@ -18,7 +18,7 @@ const LegalPage = ({ section }) => {
   };
 
   return (
-    <div className="p-4">
+    <div className="pageContainer">
       <div className="flex justify-end">
         <label htmlFor="language" className="mr-2">Language:</label>
         <select id="language" value={language} onChange={handleLanguageChange}>
@@ -27,8 +27,8 @@ const LegalPage = ({ section }) => {
         </select>
       </div>
       <div dir="auto">
-        <h1 className="text-3xl font-bold mt-4">{content.title}</h1>
-        <p className="mt-4">{content.content}</p>
+        <h1 className="text-3xl font-bold mt-4">{content?.title}</h1>
+        <p className="mt-4">{content?.content}</p>
       </div>
     </div>
   );

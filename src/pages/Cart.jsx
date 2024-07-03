@@ -5,7 +5,7 @@ const Cart = () => {
   const { cart } = useContext(CartContext);
 
   return (
-    <div className="p-4">
+    <div className="pageContainer">
       <h1 className="text-3xl font-bold">Your Cart</h1>
       {cart.length === 0 ? (
         <p>Your cart is empty.</p>
