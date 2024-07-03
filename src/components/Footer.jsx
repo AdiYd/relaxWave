@@ -5,7 +5,7 @@ const Footer = () => {
   const theme = useTheme();
 
   return (
-    <footer className="bg-primary/90 text-white p-4 mt-8">
+    <footer className="bg-primary-dark/90 border-t text-white p-4 mt-8">
       <div className="flex justify-between items-center">
         <div>
           <h2 className="font-bold my-4">RelaxWave</h2>

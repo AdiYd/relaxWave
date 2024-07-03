@@ -3,19 +3,19 @@
 @tailwind utilities;
 
 body {
-  font-family: 'Inter', 'Roboto', sans-serif;
+  font-family: 'Roboto', 'Inter', 'Roboto', sans-serif;
 }
 
 
 h1 {
   font-weight: 700;
   /* Bold */
-  font-family: 'Montserrat', 'Open Sans', sans-serif;
+  font-family: 'Roboto', 'Montserrat', 'Open Sans', sans-serif;
 }
 
 h2 {
   font-weight: 600;
-  font-family: 'Montserrat', 'Open Sans', sans-serif;
+  font-family: 'Roboto', 'Montserrat', 'Open Sans', sans-serif;
 }
 
 h3,
@@ -23,7 +23,7 @@ h4,
 h5,
 h6 {
   font-weight: 500;
-  font-family: 'Montserrat', 'Open Sans', sans-serif;
+  font-family: 'Roboto', 'Montserrat', 'Open Sans', sans-serif;
 }
 
 p,

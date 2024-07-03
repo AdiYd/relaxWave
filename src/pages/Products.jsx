@@ -1,50 +1,20 @@
 import React from 'react';
 import ProductCard from '../components/ProductCard';
-import product1 from '../img/product1.png';
-import product2 from '../img/product2.png';
+import poroducts from '../assets/json/products.json';
 
-const products = [
-  {
-    id: 1,
-    name: 'RelaxWave Massager Pro',
-    description: 'Experience the ultimate relaxation with our top-rated massager.',
-    image: product1,
-    originalPrice: 199.99,
-    discountedPrice: 149.99,
-  },
-  {
-    id: 2,
-    name: 'RelaxWave Massager Pro',
-    description: 'Experience the ultimate relaxation with our top-rated massager.',
-    image: product2,
-    originalPrice: 199.99,
-    discountedPrice: 149.99,
-  },
-  {
-    id: 3,
-    name: 'RelaxWave Massager Pro',
-    description: 'Experience the ultimate relaxation with our top-rated massager.',
-    image: product1,
-    originalPrice: 199.99,
-    discountedPrice: 149.99,
-  },
-  {
-    id: 4,
-    name: 'RelaxWave Massager Pro',
-    description: 'Experience the ultimate relaxation with our top-rated massager.',
-    image: product2,
-    originalPrice: 199.99,
-    discountedPrice: 149.99,
-  },
-
-];
 
 const Products = () => {
   return (
     <div className="pageContainer">
-      <div className="p-4 flex gap-4 flex-wrap justify-center ">
-        {products?.map(product => (
-          <ProductCard key={product.id} product={product} />
+    <div className="text-center mb-8 mt-4 fade-in ">
+      <h1 className="text-3xl font-bold ">Our Products</h1>
+      <p className="text-lg mb-6">
+        Our products carefully picked and designed to enrich your physical well-being and indoor vibes and atmosphere. with our innovative and eco-friendly products. Designed to boost your energy levels, our collection features cool gadgets that promote relaxation, tranquility, and a healthier lifestyle.
+      </p>
+    </div>
+      <div className="p-4 flex flex-wrap gap-y-8 justify-around">
+        {Object.values(poroducts)?.map(product => (
+          <ProductCard  product={product} />
         ))}
       </div>
     </div>

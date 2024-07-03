@@ -10,12 +10,10 @@ import Cart from './pages/Cart';
 import Contact from './pages/Contact';
 import CartProvider from './context/CartContext';
 import LegalPage from './pages/LegalPage';
-import product1 from './img/product1.png';
-import product2 from './img/product2.png';
 
-export const productDict = {
-  product1,
-  product2
+
+export const debug = (...args)=>{
+  console.log(...args)
 }
 
 // JavaScript to handle scroll event
