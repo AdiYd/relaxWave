@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/relaxWave/static/css/main.b7679482.css",
+    "main.js": "/relaxWave/static/js/main.4700bcf8.js",
+    "index.html": "/relaxWave/index.html",
+    "main.b7679482.css.map": "/relaxWave/static/css/main.b7679482.css.map",
+    "main.4700bcf8.js.map": "/relaxWave/static/js/main.4700bcf8.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.b7679482.css",
+    "static/js/main.4700bcf8.js"
+  ]
+}
