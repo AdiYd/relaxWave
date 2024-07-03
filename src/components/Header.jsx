@@ -25,7 +25,7 @@ export const Logo = ({showText=true, ...props}) => (
       <path d="M100 30 Q115 50 100 70 Q85 50 100 30 Z" fill="#17332A" />
     </g>
     {showText && (
-      <text x="160" y="70" textAnchor="start" fontFamily="'Comic Sans MS', 'Arial', sans-serif" fontSize="24" fill="#17332A" fontWeight="bold" letterSpacing="0.05em">
+      <text x="160" y="70" textAnchor="start" fontFamily="'Comic Sans MS', 'Arial', sans-serif" fontSize="13" fill="#17332A" fontWeight="bold" letterSpacing="0.05em">
         relaxWave
       </text>
     )}
@@ -46,25 +46,25 @@ const Header = () => {
   }
 
   return (
-    <header id="navbar" className="menu border-b border-b-gray-400 p-7 pb-0 flex justify-between items-center">
-      <div className="font-bold text-lg">
+    <header id="navbar" className="menu border-b border-b-gray-400 p-8 pb-0 flex justify-between items-center max-sm:px-2">
+      <div className="font-bold text-lg w-1/6 max-sm:hidden">
         <Link to="/">
         <HeaderLogo />
         </Link>
       </div>
-      <nav>
-        <ul className="flex gap-16 space-x-5">
+      <nav className='w-1/2 max-sm:w-5/6'>
+        <ul className="flex justify-around w-full">
           {Object.keys(PAGES).map((item,index)=>(
           <li key={index}>
               <Link onClick={onMenuPageClick} to={PAGES[item]} 
-              className={`headerLink ${item === page ? ' text-primary':''}`}>
+              className={`headerLink max-sm:text-sm ${item === page ? ' text-primary':''}`}>
               {item}
               </Link>
           </li>
           ))}
         </ul>
       </nav>
-      <div>
+      <div className='w-1/6 text-end'>
         <Link to="/cart">
           <ShoppingCart className="headerLink" />
         </Link>

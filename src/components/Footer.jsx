@@ -1,5 +1,21 @@
 import React from 'react';
 import { useTheme } from '@mui/material/styles';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {faInstagram, faFacebook, faTiktok} from '@fortawesome/free-brands-svg-icons';
+
+const SocialIcons = () => (
+  <div className="flex w-full justify-between gap-2">
+    <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer">
+      <FontAwesomeIcon icon={faInstagram} size="2x" className="text-pink-500 hover:fill-slate-200" />
+    </a>
+    <a href="https://www.tiktok.com" target="_blank" rel="noopener noreferrer">
+      <FontAwesomeIcon icon={faTiktok} size="2x" className="text-black hover:fill-slate-200" />
+    </a>
+    <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">
+      <FontAwesomeIcon icon={faFacebook} size="2x" className="text-blue-600 hover:fill-slate-200" />
+    </a>
+  </div>
+);
 
 const Footer = () => {
   const theme = useTheme();
@@ -7,22 +23,18 @@ const Footer = () => {
   return (
     <footer className="bg-primary-dark/90 border-t text-white p-4 mt-8">
       <div className="flex justify-between items-center">
-        <div>
+        <div className='w-3/4'>
           <h2 className="font-bold my-4">RelaxWave</h2>
-          <ul className='flex gap-4'>
-            <li><a href="/terms-and-conditions" className="text-gray-400 text-sm">Terms and Conditions</a></li>
-            <li><a href="/cookies-policy" className="text-gray-400 text-sm">Cookies Policy</a></li>
-            <li><a href="/privacy-policy" className="text-gray-400 text-sm">Privacy Policy</a></li>
-            <li><a href="/disclaimer" className="text-gray-400 text-sm">Disclaimer</a></li>
+          <ul className='flex gap-4 max-sm:flex-col text-sm'>
+            <li><a href="/terms-and-conditions" className="footerLink">Terms and Conditions</a></li>
+            <li><a href="/cookies-policy" className="footerLink">Cookies Policy</a></li>
+            <li><a href="/privacy-policy" className="footerLink">Privacy Policy</a></li>
+            <li><a href="/disclaimer" className="footerLink">Disclaimer</a></li>
           </ul>
         </div>
-        <div>
+        <div className='w-1/4 px-2 text-center max-sm:w-1/2'>
           <h2 className="font-bold my-4">Connect</h2>
-          <ul className="flex space-x-4">
-            <li><a href="https://instagram.com" className="text-gray-400">Instagram</a></li>
-            <li><a href="https://facebook.com" className="text-gray-400">Facebook</a></li>
-            <li><a href="https://tiktok.com" className="text-gray-400">TikTok</a></li>
-          </ul>
+            <SocialIcons />
         </div>
       </div>
     </footer>

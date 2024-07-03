@@ -7,16 +7,20 @@
 }
 
 .card {
-    @apply border flex relative flex-col justify-between cursor-default relative max-w-sm rounded-lg p-4 bg-slate-100/50 w-fit shadow-md text-center hover:shadow-xl;
+    @apply border flex relative flex-col justify-between cursor-default max-w-sm rounded-lg p-4 bg-slate-100/50 w-fit shadow-md text-center hover:shadow-xl;
     min-height: 17em;
 }
 
 .inputField {
-    @apply border p-2 rounded mb-2 focus-visible:outline-none focus-visible:shadow-md;
+    @apply border p-2 rounded-md mb-2 focus-visible:outline-none focus-visible:shadow-md;
 }
 
 .headerLink {
     @apply text-black hover:text-gray-700 font-bold;
+}
+
+.footerLink{
+    @apply text-gray-400 text-sm hover:text-white;
 }
 
 .pageContainer {
@@ -33,7 +37,7 @@
     margin: 0;
     position: absolute;
     top: -27px;
-    left: -35px;
+    left: -4rem;
 }
 
 /* ++++++++++++++++++++++++++++ Menu CSS ++++++++++++++++++++++++++++ */
@@ -61,16 +65,16 @@
 /*  ++++++++++++++++++++++++++++ Button CSS ++++++++++++++++++++++++++++ */
 .cool-button {
     @apply px-6 rounded-lg font-bold transition-all duration-300 ease-in-out;
-    background: linear-gradient(45deg, #dd735878, #feb47b71);
-    color: black;
+    background: linear-gradient(45deg, #F0926D, #EDB95B);
+        color: #17332A;
     border: 1px solid transparent;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
 .cool-button:hover {
-    background: linear-gradient(-45deg, #dd735878, #feb47b71);
+    background: linear-gradient(-45deg, #FEF8E9, #EDB95B);
         /* border-color: #6a11cb; */
-        /* color: white; */
+        color: #34254F;
         box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3);
 }
 
@@ -102,7 +106,7 @@
 /* ++++++++++++++++++++++++++++ Light Gradient CSS ++++++++++++++++++++++++++++ */
 .light-gradient {
     @apply text-gray-800 p-10;
-    background: linear-gradient(135deg, #f6d46552, #fd9f855b);
+    background: linear-gradient(135deg, #EEB85D, #fd9f855b);
     color: #333;
 }
 
