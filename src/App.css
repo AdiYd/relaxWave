@@ -2,7 +2,13 @@
   text-align: center;
 }
 
+.rtl {
+  direction: rtl;
+}
 
+.ltr {
+  direction: ltr;
+}
 
 @keyframes spin {
   from {

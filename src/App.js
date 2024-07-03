@@ -10,6 +10,7 @@ import Products from './pages/Products';
 import Cart from './pages/Cart';
 import Contact from './pages/Contact';
 import CartProvider from './context/CartContext';
+import LegalPage from './pages/LegalPage';
 
 const App = () => {
   return (
@@ -23,6 +24,10 @@ const App = () => {
             <Route path="/products" element={<Products />} />
             <Route path="/cart" element={<Cart />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/terms-and-conditions" element={<LegalPage section="termsAndConditions" />} />
+            <Route path="/cookies-policy" element={<LegalPage section="cookiesPolicy" />} />
+            <Route path="/privacy-policy" element={<LegalPage section="privacyPolicy" />} />
+            <Route path="/disclaimer" element={<LegalPage section="disclaimer" />} />
           </Routes>
         </main>
         <Footer />

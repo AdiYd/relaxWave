@@ -23,7 +23,7 @@ const Home = () => {
             <input type="checkbox" className="mr-2" />
             Update me with new products
           </label>
-          <button type="submit" className="bg-pink-600 text-white px-4 py-2 rounded mt-2">Submit</button>
+          <button type="submit" className="bg-primary text-white px-4 py-2 rounded mt-2">Submit</button>
         </form>
       </div>
     </div>

@@ -10,9 +10,10 @@ const Footer = () => {
         <div>
           <h2 className="font-bold">RelaxWave</h2>
           <ul>
-            <li><a href="/terms" className="text-gray-400">Services and terms</a></li>
-            <li><a href="/cookies" className="text-gray-400">Cookies policy</a></li>
-            <li><a href="/legal" className="text-gray-400">Legal and privacy</a></li>
+            <li><a href="/terms-and-conditions" className="text-gray-400">Terms and Conditions</a></li>
+            <li><a href="/cookies-policy" className="text-gray-400">Cookies Policy</a></li>
+            <li><a href="/privacy-policy" className="text-gray-400">Privacy Policy</a></li>
+            <li><a href="/disclaimer" className="text-gray-400">Disclaimer</a></li>
           </ul>
         </div>
         <div>

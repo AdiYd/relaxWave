@@ -10,7 +10,31 @@ const products = [
     originalPrice: 199.99,
     discountedPrice: 149.99,
   },
-  // Add more products as needed
+  {
+    id: 2,
+    name: 'RelaxWave Massager Pro',
+    description: 'Experience the ultimate relaxation with our top-rated massager.',
+    image: '/images/massager1.jpg',
+    originalPrice: 199.99,
+    discountedPrice: 149.99,
+  },
+  {
+    id: 3,
+    name: 'RelaxWave Massager Pro',
+    description: 'Experience the ultimate relaxation with our top-rated massager.',
+    image: '/images/massager1.jpg',
+    originalPrice: 199.99,
+    discountedPrice: 149.99,
+  },
+  {
+    id: 4,
+    name: 'RelaxWave Massager Pro',
+    description: 'Experience the ultimate relaxation with our top-rated massager.',
+    image: '/images/massager1.jpg',
+    originalPrice: 199.99,
+    discountedPrice: 149.99,
+  },
+
 ];
 
 const Products = () => {
