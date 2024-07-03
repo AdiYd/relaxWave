@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/relaxWave/static/css/main.b7679482.css",
-    "main.js": "/relaxWave/static/js/main.f4524b7b.js",
+    "main.css": "/relaxWave/static/css/main.9a999055.css",
+    "main.js": "/relaxWave/static/js/main.7dd3ed42.js",
     "index.html": "/relaxWave/index.html",
-    "main.b7679482.css.map": "/relaxWave/static/css/main.b7679482.css.map",
-    "main.f4524b7b.js.map": "/relaxWave/static/js/main.f4524b7b.js.map"
+    "main.9a999055.css.map": "/relaxWave/static/css/main.9a999055.css.map",
+    "main.7dd3ed42.js.map": "/relaxWave/static/js/main.7dd3ed42.js.map"
   },
   "entrypoints": [
-    "static/css/main.b7679482.css",
-    "static/js/main.f4524b7b.js"
+    "static/css/main.9a999055.css",
+    "static/js/main.7dd3ed42.js"
   ]
 }
