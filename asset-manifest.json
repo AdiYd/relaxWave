@@ -1,13 +1,17 @@
 {
   "files": {
-    "main.css": "/relaxWave/static/css/main.b591ee19.css",
-    "main.js": "/relaxWave/static/js/main.e4ce25d0.js",
+    "main.css": "/relaxWave/static/css/main.3b860d49.css",
+    "main.js": "/relaxWave/static/js/main.eaa70af6.js",
+    "static/media/slick.svg": "/relaxWave/static/media/slick.2630a3e3eab21c607e21.svg",
+    "static/media/slick.eot": "/relaxWave/static/media/slick.a4e97f5a2a64f0ab1323.eot",
+    "static/media/slick.ttf": "/relaxWave/static/media/slick.c94f7671dcc99dce43e2.ttf",
     "index.html": "/relaxWave/index.html",
-    "main.b591ee19.css.map": "/relaxWave/static/css/main.b591ee19.css.map",
-    "main.e4ce25d0.js.map": "/relaxWave/static/js/main.e4ce25d0.js.map"
+    "static/media/slick.woff": "/relaxWave/static/media/slick.295183786cd8a1389865.woff",
+    "main.3b860d49.css.map": "/relaxWave/static/css/main.3b860d49.css.map",
+    "main.eaa70af6.js.map": "/relaxWave/static/js/main.eaa70af6.js.map"
   },
   "entrypoints": [
-    "static/css/main.b591ee19.css",
-    "static/js/main.e4ce25d0.js"
+    "static/css/main.3b860d49.css",
+    "static/js/main.eaa70af6.js"
   ]
 }
