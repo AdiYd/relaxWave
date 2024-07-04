@@ -3,8 +3,13 @@ import ProductCard from '../components/ProductCard';
 import products from '../assets/json/products.json';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGift } from '@fortawesome/free-solid-svg-icons';
+import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { Logo } from '../components/Header';
 
 const Home = () => {
+
+  console.log(process.env.PUBLIC_URL);
   return (
     <div className="">
         {homeContent}
@@ -18,34 +23,34 @@ export default Home;
 
 const homeContent =<div className="pageContainer max-sm:px-0">
 <header className="text-center mb-8 mt-4 fade-in">
-  <h1 className="text-3xl font-bold ">Welcome to RelaxWave</h1>
+  <h1 style={{fontFamily: '"Poppins", sans-serif'}} className="text-3xl font-bold text-gradient-linear ">RelaxWave - LifeStyle</h1>
   <h2 className="mt-4 text-xl">Your gateway to ultimate relaxation and rejuvenation</h2>
 </header>
 
-<section className="mb-12 max-sm:px-4">
+<section className="mb-12 max-sm:px-8">
   <h2 className="text-2xl font-bold text-primary mb-4">Our Mission</h2>
   <p className="text-lg text-neutral-dark">
     At RelaxWave, we are dedicated to enhancing your well-being through innovative relaxation products that blend modern technology with timeless relaxation techniques. Our mission is to help you find tranquility and relief from the stresses of everyday life.
   </p>
 </section>
 
-<section className="mb-12 max-sm:px-4">
+<section className="mb-12 max-sm:px-8">
   <h2 className="text-2xl font-bold text-primary mb-4">Featured Products</h2>
-  <div className="grid justify-items-center grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+  <div className="flex flex-wrap justify-around justify-items-center gap-4">
     {Object.values(products).map((item, index)=>(
       index <3 && <ProductCard  key={index}
-        imageClass='w-3/4 max-h-72 mx-auto rounded-full shadow-md object-cover'
-        showProductCount={false} imageHeight={'15em'} cardHeight = {'30em'}
+        imageClass='w-5/6 max-h-56 mx-auto rounded-full shadow-md object-cover'
+        showProductCount={false} 
         isSale={true} discountPrecent={index===1 ? 10: undefined} product={item} />
     ))}
   </div>
-  <div className="flex my-8 justify-around flex-wrap gap-4">
-  <ProductCard imageClass='w-3/4 max-h-72 mx-auto rounded-full shadow-md object-cover' 
-    showProductCount={false} discountPrecent={15} imageHeight={'15em'} cardHeight = {'30em'}
+  <div className="flex items-center my-8 justify-around flex-wrap gap-4">
+  <ProductCard imageClass='w-5/6 max-h-56 mx-auto rounded-full shadow-md object-cover' 
+    showProductCount={false} discountPrecent={15}
     product={Object.values(products)[9]} />
-    <ProductCard imageClass='w-3/4 max-h-72 mx-auto rounded-full shadow-md object-cover'  
-    showProductCount={false} imageHeight={'15em'} cardHeight = {'30em'}
-    product={Object.values(products)[6]} />
+    <ProductCard imageClass='w-5/6 max-h-56 mx-auto rounded-full shadow-md object-cover'  
+    showProductCount={false} 
+    product={Object.values(products)[7]} />
   </div>
 </section>
 
@@ -66,7 +71,7 @@ const homeContent =<div className="pageContainer max-sm:px-0">
 </section>
 
 <section className="bg-blue-300/90 p-6 text-center border rounded-2xl w-4/5 mx-auto max-sm:w-full max-sm:px-4">
-  <div className="flex items-center justify-center gap-8 mb-8 max-sm:gap-4">
+  <div className="flex items-center justify-center gap-8 mb-8 max-sm:gap-4 max-sm:flex-col">
       <FontAwesomeIcon icon={faGift} size='xl' color='#17332A' />
      <h2 className="text-xl">Subscribe for Sales and Promotions</h2>
   </div>
@@ -85,13 +90,3 @@ const homeContent =<div className="pageContainer max-sm:px-0">
 </div>
 
 
-const getRandomItemFromObject = (obj)=> {
-  // Convert object values to an array
-  const values = Object.values(obj);
-
-  // Get a random index from the array
-  const randomIndex = Math.floor(Math.random() * values.length);
-
-  // Return the random item
-  return values[randomIndex];
-}

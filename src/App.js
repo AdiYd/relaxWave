@@ -37,9 +37,11 @@ const App = () => {
     <CartProvider>
       <Router>
         <Header />
-        <main className="flex-grow mt-12">
+        <main className="flex-grow mt-12" style={{minHeight:'85vh'}}>
           <Routes>
+            <Route path='*' index element={<Home />} />
             <Route path="/" element={<Home />} />
+            <Route path="/relaxWave" element={<Home />} />
             <Route path="/about" element={<About />} />
             <Route path="/products" element={<Products />} />
             <Route path="/cart" element={<Cart />} />

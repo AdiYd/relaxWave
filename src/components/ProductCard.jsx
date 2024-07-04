@@ -1,7 +1,5 @@
 import React from 'react';
-import { debug } from '../App';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTags } from '@fortawesome/free-solid-svg-icons';
+
 
 const SaleIcon = (...props) => (
    <svg
@@ -26,13 +24,14 @@ const SaleIcon = (...props) => (
   </svg>
 );
 
-const defaultImageClass = "w-full mx-auto max-h-60 shadow rounded-md object-cover";
+const defaultImageClass = "w-full mx-auto max-h-56 shadow rounded-md object-cover";
 const ProductCard = ({ product,
   showProductCount = true ,
   showPrice = true, 
   showButton = true,
   buttonText = 'Add to Cart',
-  imageHeight ,
+  imageWidth,
+  imageRadius = '0px',
   isSale = false,
   discountPrecent,
   discountText = 'OFF',
@@ -44,15 +43,17 @@ const ProductCard = ({ product,
         className="absolute top-4 left-4 px-2 py-1 text-xs rounded-md bg-red-950 text-white">
         {`${discountPrecent}% ${discountText}`}
       </button>}
-      <img src={product.image} style={{height: imageHeight}}
+      <img src={process.env.PUBLIC_URL + product.image} 
+      style={{width: `${imageWidth}px`, height:imageWidth ?`${0.8*imageWidth}px`:undefined }}
       alt={product.name} className={imageClass} />
-      <h3 className="font-bold text-lg mt-2">{product.name}</h3>
+      <h3 className="font-bold text-lg mt-2 mx-auto">{product.name}</h3>
+      <hr className='mb-2 mt-0 mx-auto w-2/3 border-b' />
       <p className="text-gray-500 text-sm">{product.description}</p>
-      {showPrice && <div className="mt-4">
+      {showPrice && <div className="mt-4 mx-auto">
         {product.originalPrice &&
         <div className="relative w-fit mx-auto">
-        {isSale &&  <SaleIcon />}
-        <span className="line-through text-gray-500">${product.originalPrice}</span>
+          {isSale &&  <SaleIcon />}
+          <span className="line-through text-gray-500">${product.originalPrice}</span>
         </div>}
         <span className="font-bold text-xl text-red-800 ml-2">${product.discountedPrice}</span>
       </div>}

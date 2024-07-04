@@ -7,10 +7,34 @@
 }
 
 .card {
-    @apply border flex relative flex-col justify-between cursor-default max-w-sm rounded-lg p-4 bg-slate-100/50 w-fit shadow-md text-center hover:shadow-xl;
+    @apply border flex flex-col overflow-y-clip relative justify-between cursor-default max-w-sm rounded-lg p-4 bg-slate-100/50 w-fit shadow-md text-center hover:shadow-xl;
     min-height: 17em;
 }
 
+.card * {
+    width: fit-content;
+}
+
+div.card::-webkit-scrollbar {
+    @apply rounded-lg;
+    width: 0.4em;
+    height: 0.3em;
+}
+
+div.card::-webkit-scrollbar-track {
+    background: transparent;
+    width: 3px;
+}
+
+div.card::-webkit-scrollbar-thumb {
+    @apply rounded-lg;
+    cursor: grab;
+    background-color: rgba(0, 0, 0, 0.442);
+}
+
+div.card::-webkit-scrollbar-thumb:active {
+    cursor: grabbing;
+}
 .inputField {
     @apply border p-2 rounded-md mb-2 focus-visible:outline-none focus-visible:shadow-md;
 }
@@ -39,6 +63,22 @@
     top: -27px;
     left: -4rem;
 }
+
+.text-gradient-linear {
+    background: linear-gradient(180deg, #17332A, #C97B5B, #EEB85D);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+  }
+.text-gradient-radial {
+    background: radial-gradient(circle, #C97B5B, #17332A, #EEB85D);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+  }
+    
 
 /* ++++++++++++++++++++++++++++ Menu CSS ++++++++++++++++++++++++++++ */
 .menu {

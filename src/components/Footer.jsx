@@ -1,7 +1,7 @@
 import React from 'react';
-import { useTheme } from '@mui/material/styles';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {faInstagram, faFacebook, faTiktok} from '@fortawesome/free-brands-svg-icons';
+import { Link } from 'react-router-dom';
 
 const SocialIcons = () => (
   <div className="flex w-full justify-between gap-2">
@@ -18,18 +18,16 @@ const SocialIcons = () => (
 );
 
 const Footer = () => {
-  const theme = useTheme();
-
   return (
     <footer className="bg-primary-dark/90 border-t text-white p-4 mt-8">
       <div className="flex justify-between items-center">
         <div className='w-3/4'>
           <h2 className="font-bold my-4">RelaxWave</h2>
           <ul className='flex gap-4 max-sm:flex-col text-sm'>
-            <li><a href="/terms-and-conditions" className="footerLink">Terms and Conditions</a></li>
-            <li><a href="/cookies-policy" className="footerLink">Cookies Policy</a></li>
-            <li><a href="/privacy-policy" className="footerLink">Privacy Policy</a></li>
-            <li><a href="/disclaimer" className="footerLink">Disclaimer</a></li>
+            <li><Link to="terms-and-conditions" className="footerLink">Terms and Conditions</Link></li>
+            <li><Link to="cookies-policy" className="footerLink">Cookies Policy</Link></li>
+            <li><Link to='privacy-policy' className="footerLink">Privacy Policy</Link></li>
+            <li><Link to="/disclaimer" className="footerLink">Disclaimer</Link></li>
           </ul>
         </div>
         <div className='w-1/4 px-2 text-center max-sm:w-1/2'>

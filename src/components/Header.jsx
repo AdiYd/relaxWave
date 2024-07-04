@@ -1,6 +1,7 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import { Link } from 'react-router-dom';
 import ShoppingCart from '@mui/icons-material/ShoppingCart';
+import { useNavigate } from 'react-router-dom';
 
 
 export const Logo = ({showText=true, ...props}) => (
@@ -41,6 +42,7 @@ const PAGES = {
 
 const Header = () => {
   const [page, setPage] = useState('Home');
+
   const onMenuPageClick = (e)=>{
       setPage(e.target.innerText);
   }
@@ -49,7 +51,7 @@ const Header = () => {
     <header id="navbar" className="menu border-b border-b-gray-400 p-8 pb-0 flex justify-between items-center max-sm:px-2">
       <div className="font-bold text-lg w-1/6 max-sm:hidden">
         <Link to="/">
-        <HeaderLogo />
+        <HeaderLogo showText={false} />
         </Link>
       </div>
       <nav className='w-1/2 max-sm:w-5/6'>
