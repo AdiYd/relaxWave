@@ -2,8 +2,9 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart, faLightbulb, faGlobe, faSpa, faBed, faBrain, faLeaf, faStar, faSmile, faRecycle } from '@fortawesome/free-solid-svg-icons';
-import aboutContent from '../assets/json/About.json';
-
+import aboutContent from '../assets/json/about.json';
+import contact from '../assets/json/contact.json';
+import { ContactUs } from './Contact';
 
 const AboutSection = ({ section }) => {
   const iconMap = {
@@ -71,15 +72,10 @@ const About = () => {
           {aboutContent.map((section, index) => (
             <AboutSection key={index} section={section} />
           ))}
-      </div>
-
-        <section className="bg-neutral/60 p-6 sha text-center rounded-lg w-2/3 mx-auto max-sm:w-full max-sm:bg-purple-300/30">
-            <h3 className="text-2xl font-semibold text-primary mb-4">Contact Us</h3>
-            <p className="text-lg mb-2">Address: 123 Serenity Lane, Calm City, Tranquility State, 56789</p>
-            <p className="text-lg mb-6">Phone: (123) 456-7890</p>
-            <Link to="/contact" className="text-blue-600 underline text-lg">Contact Us</Link>
-        </section>
-
+        </div>
+        <div className='w-3/4 mx-auto rounded-lg shadow max-sm:w-full'>
+          <ContactUs whatsApp data={contact} />
+        </div>
       </div>
     </div>
   );

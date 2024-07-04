@@ -6,6 +6,17 @@
     font-family: 'Open Sans', sans-serif;
 }
 
+#navbar {
+    z-index: 50;
+}
+
+#navbar svg {
+    z-index: 51;
+}
+
+#navbar a {
+    z-index: 52;
+}
 .card {
     @apply border flex flex-col overflow-y-clip relative justify-between cursor-default max-w-sm rounded-lg p-4 bg-slate-100/50 w-fit shadow-md text-center hover:shadow-xl;
     min-height: 17em;
@@ -48,7 +59,7 @@ div.card::-webkit-scrollbar-thumb:active {
 }
 
 .pageContainer {
-    @apply bg-neutral/30 p-4 px-8 mt-16;
+    @apply bg-neutral/30 p-4 px-8;
     }
     
 .sectionTitle {
@@ -63,6 +74,7 @@ div.card::-webkit-scrollbar-thumb:active {
     top: -27px;
     left: -4rem;
 }
+
 
 .text-gradient-linear {
     background: linear-gradient(180deg, #17332A, #C97B5B, #EEB85D);
@@ -118,6 +130,46 @@ div.card::-webkit-scrollbar-thumb:active {
         box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3);
 }
 
+/* Custom styles for the dots */
+.slick-dots li button:before {
+    font-size: 15px !important;
+    /* Adjust the size of the dots */
+    /* border: 1px solid black; */
+    padding: 0em !important;
+    color: #C97B5B !important;
+    /* Default color of the dots */
+}
+
+
+.slick-dots li.slick-active button:before {
+    color: #17332A !important;
+    /* Color of the active dot */
+}
+
+/* Custom styles for the arrows */
+.slick-prev:before,
+.slick-next:before {
+    font-size: 40px !important;
+    /* Adjust the size of the arrow icons */
+    color: #C97B5B !important;
+    /* Color of the arrow icons */
+}
+
+.slick-slide>div {
+    height: auto !important;
+    display: flex;
+    /* Flexbox for alignment */
+    align-items: center;
+    /* Center items vertically */
+    justify-content: center;
+    /* Center items horizontally */
+    overflow: hidden;
+    /* Prevent overflowing */
+}
+
+.css-5c9f69 {
+    height: fit-content !important;
+}
 /* ++++++++++++++++++++++++++++ Animation box-shadow glow ++++++++++++++++++++++++++++ */
 @keyframes button-glow {
 
@@ -202,9 +254,12 @@ div.card::-webkit-scrollbar-thumb:active {
     animation: slideIn 1s ease-in-out;
 }
 
+.rtl {
+    direction: rtl;
+}
 
 /* ++++++++++++++++++++++++++++  Testing with classes ++++++++++++++++++++++++++++  */
 
 .test {
-    color: #152a62;
+    color: #fefaf0;
 }

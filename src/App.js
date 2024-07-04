@@ -10,6 +10,7 @@ import Cart from './pages/Cart';
 import Contact from './pages/Contact';
 import CartProvider from './context/CartContext';
 import LegalPage from './pages/LegalPage';
+import HeaderMui from './components/HeaderMui';
 
 
 export const debug = (...args)=>{
@@ -19,6 +20,9 @@ export const debug = (...args)=>{
 // JavaScript to handle scroll event
 window.addEventListener('scroll', () => {
   const navbar = document.getElementById('navbar');
+  if (!navbar){
+    return
+  }
   if (window.scrollY > 800){
     navbar.classList.add('hidden');
     navbar.classList.remove('scrolled');
@@ -36,8 +40,8 @@ const App = () => {
   return (
     <CartProvider>
       <Router>
-        <Header />
-        <main className="flex-grow mt-12" style={{minHeight:'85vh'}}>
+        <HeaderMui />
+        <main className="flex-grow" style={{minHeight:'75vh'}}>
           <Routes>
             <Route path='*' index element={<Home />} />
             <Route path="/" element={<Home />} />

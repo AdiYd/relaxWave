@@ -3,13 +3,11 @@ import ProductCard from '../components/ProductCard';
 import products from '../assets/json/products.json';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGift } from '@fortawesome/free-solid-svg-icons';
-import { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { Logo } from '../components/Header';
+import { Carousel } from '../components/MUI';
+
 
 const Home = () => {
 
-  console.log(process.env.PUBLIC_URL);
   return (
     <div className="">
         {homeContent}
@@ -44,15 +42,25 @@ const homeContent =<div className="pageContainer max-sm:px-0">
         isSale={true} discountPrecent={index===1 ? 10: undefined} product={item} />
     ))}
   </div>
-  <div className="flex items-center my-8 justify-around flex-wrap gap-4">
-  <ProductCard imageClass='w-5/6 max-h-56 mx-auto rounded-full shadow-md object-cover' 
-    showProductCount={false} discountPrecent={15}
-    product={Object.values(products)[9]} />
-    <ProductCard imageClass='w-5/6 max-h-56 mx-auto rounded-full shadow-md object-cover'  
-    showProductCount={false} 
-    product={Object.values(products)[7]} />
-  </div>
 </section>
+
+<section className="mb-12 max-sm:px-8">
+      <h2 className="text-2xl font-bold text-primary text-center mb-4">Special Offers</h2>
+      <div className="flex items-center my-8 justify-around flex-wrap gap-4">
+      <div className='w-2/3 mx-auto'>
+        <Carousel >
+        <ProductCard imageClass='w-5/6 max-h-56 mx-auto rounded-full shadow-md object-cover' 
+          showProductCount={false} discountPrecent={15}
+          product={Object.values(products)[9]} />
+          <ProductCard imageClass='w-5/6 max-h-56 mx-auto rounded-full shadow-md object-cover'  
+          showProductCount={false} 
+          discountPrecent={20}
+          product={Object.values(products)[7]} />
+        </Carousel>
+        </div>
+      </div>
+  </section>
+
 
 <section className="mb-12 max-sm:px-4">
   <h2 className="sectionTitle">Customer Testimonials</h2>
