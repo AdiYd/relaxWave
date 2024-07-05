@@ -4,13 +4,14 @@ import products from '../assets/json/products.json';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGift } from '@fortawesome/free-solid-svg-icons';
 import { Carousel } from '../components/MUI';
+import { useNavigate } from 'react-router-dom';
 
 
 const Home = () => {
-
+  const navigate = useNavigate()
   return (
     <div className="">
-        {homeContent}
+        {homeContent(navigate)}
     </div>
   );
 };
@@ -19,7 +20,7 @@ export default Home;
 
 
 
-const homeContent =<div className="pageContainer max-sm:px-0">
+const homeContent = (navigate)=><div className="pageContainer max-sm:px-0">
 <header className="text-center mb-8 mt-4 fade-in">
   <h1 style={{fontFamily: '"Poppins", sans-serif'}} className="text-3xl font-bold text-gradient-linear ">RelaxWave - LifeStyle</h1>
   <h2 className="mt-4 text-xl">Your gateway to ultimate relaxation and rejuvenation</h2>
@@ -36,7 +37,11 @@ const homeContent =<div className="pageContainer max-sm:px-0">
   <h2 className="text-2xl font-bold text-primary mb-4">Featured Products</h2>
   <div className="flex flex-wrap justify-around justify-items-center gap-4">
     {Object.values(products).map((item, index)=>(
-      index <3 && <ProductCard  key={index}
+      index <3 && <ProductCard  
+        key={index}
+        buttonText='View Item'
+        showPrice = {false} 
+        onClick={()=>{navigate(`products/${item.name}`)}}
         imageClass='w-5/6 max-h-56 mx-auto rounded-full shadow-md object-cover'
         showProductCount={false} 
         isSale={true} discountPrecent={index===1 ? 10: undefined} product={item} />
@@ -45,17 +50,29 @@ const homeContent =<div className="pageContainer max-sm:px-0">
 </section>
 
 <section className="mb-12 max-sm:px-8">
-      <h2 className="text-2xl font-bold text-primary text-center mb-4">Special Offers</h2>
+      <h2 className="text-2xl font-bold text-primary text-center mb-4">Special discounts offers</h2>
       <div className="flex items-center my-8 justify-around flex-wrap gap-4">
-      <div className='w-2/3 mx-auto'>
-        <Carousel >
-        <ProductCard imageClass='w-5/6 max-h-56 mx-auto rounded-full shadow-md object-cover' 
+      <div className='w-2/3 mx-auto max-sm:w-full'>
+        <Carousel  >
+        <div className='flex justify-center'>
+        <ProductCard
+          buttonText='View Item'
+          showPrice = {false} 
+          onClick={()=>{navigate(`products/${products[9].name}`)}}
+          imageClass='w-5/6 max-h-56 mx-auto rounded-full shadow-md object-cover' 
           showProductCount={false} discountPrecent={15}
           product={Object.values(products)[9]} />
-          <ProductCard imageClass='w-5/6 max-h-56 mx-auto rounded-full shadow-md object-cover'  
+          </div>
+        <div className='flex justify-center'>
+          <ProductCard
+          buttonText='View Item' 
+          showPrice = {false}         
+          onClick={()=>{navigate(`products/${products[7].name}`)}}
+          imageClass='w-5/6 max-h-56 mx-auto rounded-full shadow-md object-cover'  
           showProductCount={false} 
           discountPrecent={20}
           product={Object.values(products)[7]} />
+          </div>
         </Carousel>
         </div>
       </div>

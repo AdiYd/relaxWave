@@ -1,0 +1,21 @@
+{
+    "title": "Light Projector",
+    "id": 10,
+    "description": "The Light Projector creates a calming ambiance with soothing lights and sounds, perfect for relaxation and enhancing your sleep quality.",
+    "collageImage": [
+    ],
+    "carouselImage": [
+    ],
+    "descriptionBody": "The ultimate projector you'll ever need",
+    "video": "https://www.youtube.com/embed/3lh8L6g2tPs",
+    "oldPrice": null,
+    "currency": "usd",
+    "price": 49.99,
+    "discount": 20,
+    "buyingOptions": {
+      "Items": ["Item 1", "Item 2", "Item 3"],
+      "Color": ["White", "Black", "Blue"],
+      "Size": ["xl", "l", "m", "s", "xs"]
+    }
+  }
+  

@@ -4,12 +4,12 @@ import './style/App.css';
 import './style/style.css';
 import App from './App';
 import { ThemeProvider } from '@mui/material/styles';
-import theme from './theme';
+import {colorThemeDark, inputTheme, themeFull} from './theme';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <ThemeProvider theme={theme}>
+    <ThemeProvider theme={themeFull}>
       <App />
     </ThemeProvider>
   </React.StrictMode>,

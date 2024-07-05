@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, useParams } from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Home from './pages/Home';
@@ -11,11 +11,27 @@ import Contact from './pages/Contact';
 import CartProvider from './context/CartContext';
 import LegalPage from './pages/LegalPage';
 import HeaderMui from './components/HeaderMui';
-
+import products from './assets/json/productData.json';
 
 export const debug = (...args)=>{
   console.log(...args)
 }
+
+const PageWrapper = () => {
+  const { arg } = useParams();
+  try{
+      for (let item of products){
+        if (item?.title === arg){
+          debug('Routing to : ', arg);
+          return <Products paoductName={arg} />;
+        }
+      }
+      return <Products />
+    }
+      catch{
+        return <Products />
+    }
+};
 
 // JavaScript to handle scroll event
 window.addEventListener('scroll', () => {
@@ -47,7 +63,8 @@ const App = () => {
             <Route path="/" element={<Home />} />
             <Route path="/relaxWave" element={<Home />} />
             <Route path="/about" element={<About />} />
-            <Route path="/products" element={<Products />} />
+            <Route path="/products/*" element={<Products productName={'none'} />} />
+            <Route path="/products/:arg" element={<PageWrapper />} />
             <Route path="/cart" element={<Cart />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/terms-and-conditions" element={<LegalPage section="termsAndConditions" />} />

@@ -38,7 +38,7 @@ const Header = () => {
 
   return (
     <div id='navbar'>
-      <AppBar sx={{background:'#fefaf0', color:'#403162'}} position="fixed">
+      <AppBar sx={{background:'white', color:'#403162'}} position="fixed">
         <Toolbar>
           <Typography variant="h6" sx={{ flexGrow: 1 }}>
           <Link to={'Home'}>

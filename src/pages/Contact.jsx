@@ -42,12 +42,12 @@ const Contact = () => {
 
       </div> */}
 
-      <div className='mx-auto mb-4 p-4 w-3/4 fade-in max-sm:mx-0 max-sm:w-5/6 max-sm:px-0'>
+      <div className='mx-auto mb-4 p-4 w-3/4 fade-in max-sm:w-11/12 max-sm:px-0'>
         <form className="flex flex-col gap-4 px-12 py-8 rounded-2xl border bg-red-300 max-sm:rounded-none max-sm:px-4">
-        <div className="text-center m-auto">
-          <h1 className="text-3xl font-bold text-center mb-8">Contact Us</h1>
-          <p className='text-lg text-center mb-4'>If you have any questions or concerns, feel free to reach out to us.</p>
-        </div>
+            <div className="text-center m-auto">
+              <h1 className="text-3xl font-bold text-center mb-8">Contact Us</h1>
+              <p className='text-lg text-center mb-4'>If you have any questions or concerns, feel free to reach out to us.</p>
+            </div>
             <input type="name"  placeholder="Name" required name='name' className="inputField" />
             <input type="email" placeholder="Email" name='email' required className="inputField" />
             <textarea placeholder="Message" className="inputField h-40"></textarea>

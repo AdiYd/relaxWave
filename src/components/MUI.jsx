@@ -26,7 +26,7 @@ export const Carousel = ({onClick, children , ...props}) => {
   };
 
   return (
-    <Slider className='w-11/12 items-center justify-center mb-12 mx-auto' {...settings}>
+    <Slider {...props} className='w-11/12 items-center justify-center mb-12 mx-auto' {...settings}>
             {children}
     </Slider>
   );
@@ -96,4 +96,23 @@ export const StyledContainer = () => (
     </Typography>
   </Container>
 );
+
+
+export const StyledButton = ({children, ...props}) => {
+    return (
+      <Button
+        className='btn-primary w-2/3'
+        variant="contained"
+        sx={{
+          backgroundColor: '#C97B5B', // Custom background color
+          '&:hover': {
+            backgroundColor: '#EEB85D', // Custom hover color
+          },
+        }}
+        {...props}
+      >
+        {children}
+      </Button>
+    );
+  };
 

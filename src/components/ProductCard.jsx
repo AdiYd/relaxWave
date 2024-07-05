@@ -1,4 +1,6 @@
-import React from 'react';
+import React, {useState} from 'react';
+import { StyledButton } from './MUI';
+import { Button, IconButton, TextField } from '@mui/material';
 
 
 const SaleIcon = (...props) => (
@@ -25,27 +27,50 @@ const SaleIcon = (...props) => (
 );
 
 const defaultImageClass = "w-full mx-auto max-h-56 shadow rounded-md object-cover";
-const ProductCard = ({ product,
+const ProductCard = ({ 
+  product,
+  minQuantity = 1,
+  maxQuantity = 10,
   showProductCount = true ,
   showPrice = true, 
   showButton = true,
   buttonText = 'Add to Cart',
+  onClick = (e)=>{console.log(e.target.innerText, ' Clicked!')},
   imageWidth,
-  imageRadius = '0px',
   isSale = false,
   discountPrecent,
   discountText = 'OFF',
   imageClass =  defaultImageClass,
   cardHeight }) => {
+    const [quantity, setQuantity] = useState(1);
+    const handleDecreaseQuantity = () => {
+      if (quantity > minQuantity) {
+      setQuantity(quantity - 1);
+      }
+  };
+
+  const handleIncreaseQuantity = () => {
+      if (quantity < maxQuantity) {
+      setQuantity(quantity + 1);
+      }
+  };
+
+
+
+
   return (
-    product && <div className="card" style={{height:cardHeight}}>
+    product && <div className="card mx-auto" style={{height:cardHeight}}>
       {discountPrecent && <button 
         className="absolute top-4 left-4 px-2 py-1 text-xs rounded-md bg-red-950 text-white">
         {`${discountPrecent}% ${discountText}`}
       </button>}
-      <img src={process.env.PUBLIC_URL + product.image} 
+      <div className="w-full block overflow-hidden">
+      <img 
+      id='cardImg' 
+      src={process.env.PUBLIC_URL + product.image} 
       style={{width: `${imageWidth}px`, height:imageWidth ?`${0.8*imageWidth}px`:undefined }}
       alt={product.name} className={imageClass} />
+      </div>
       <h3 className="font-bold text-lg mt-2 mx-auto">{product.name}</h3>
       <hr className='mb-2 mt-0 mx-auto w-2/3 border-b' />
       <p className="text-gray-500 text-sm">{product.description}</p>
@@ -59,10 +84,39 @@ const ProductCard = ({ product,
       </div>}
         {(showProductCount && showButton )?  
               <div className="flex w-full align-baseline justify-between mx-auto items-center mt-4">
-                  <button className="btn-primary mx-2">{buttonText}</button>
-                  <input type="number" min="1" defaultValue="1" className="inputField border w-16 p-2 rounded my-auto mx-2" /> 
-             </div> :
-                  <button className="btn-primary w-2/3 rounded-md mx-auto">{buttonText}</button>
+                  <StyledButton onClick={onClick} className="btn-primary mx-2">{buttonText}</StyledButton>
+                  <div className="flex w-fit items-center">
+                      <IconButton 
+                      onClick={handleDecreaseQuantity} 
+                      disabled={quantity <= minQuantity} 
+                      sx = {{paddingX:'1em'}}
+                      className={quantity <= minQuantity ? 'opacity-80' : ''}>
+                        -
+                      </IconButton>
+                      <TextField
+                        type="number"
+                        fullWidth={true}
+                        value={quantity}
+                        onChange={(e) => setQuantity(Number(e.target.value))}
+                        inputProps={{ min: minQuantity, max: maxQuantity, className: 'text-center w-12' }}
+                        className="mx-2"
+                      />
+                      <IconButton 
+                      onClick={handleIncreaseQuantity} 
+                      disabled={quantity >= maxQuantity} 
+                      sx = {{paddingX:'1em'}}
+                      className={quantity >= maxQuantity ? 'opacity-80' : ''}>
+                        +
+                      </IconButton>
+                  </div>
+             </div> : 
+             <div className='mt-4 items-center w-full p0 mb-0'>
+                    <Button
+                    variant="contained" 
+                    color="primary"
+                    onClick={onClick} 
+                    className="btn-primary w-2/3 rounded-md self-center mx-auto">{buttonText}</Button>
+              </div>
              }
 
     </div>

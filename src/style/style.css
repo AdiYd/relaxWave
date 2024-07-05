@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 .btn-primary {
-    @apply bg-primary text-white font-medium py-2 px-2 rounded hover:bg-primary-dark;
+    @apply bg-primary-light text-primary-white shadow-md font-medium py-2 px-2 rounded hover:bg-primary;
     font-family: 'Open Sans', sans-serif;
 }
 
@@ -20,12 +20,15 @@
 .card {
     @apply border flex flex-col overflow-y-clip relative justify-between cursor-default max-w-sm rounded-lg p-4 bg-slate-100/50 w-fit shadow-md text-center hover:shadow-xl;
     min-height: 17em;
+    background-color: #FEF8E9;
+    background-color: white;
 }
 
-.card * {
+/* .card div {
     width: fit-content;
 }
 
+*/
 div.card::-webkit-scrollbar {
     @apply rounded-lg;
     width: 0.4em;
@@ -60,11 +63,11 @@ div.card::-webkit-scrollbar-thumb:active {
 
 .pageContainer {
     @apply bg-neutral/30 p-4 px-8;
-    }
+}
     
 .sectionTitle {
         @apply text-2xl font-bold text-primary mb-4;
-        }
+}
 
 #svgLogo {
     display: block;
@@ -75,6 +78,13 @@ div.card::-webkit-scrollbar-thumb:active {
     left: -4rem;
 }
 
+img#cardImg {
+    transition: transform 0.3s ease-in-out;
+}
+
+img#cardImg:hover {
+    transform: scale(1.15);
+}
 
 .text-gradient-linear {
     background: linear-gradient(180deg, #17332A, #C97B5B, #EEB85D);
@@ -146,25 +156,23 @@ div.card::-webkit-scrollbar-thumb:active {
     /* Color of the active dot */
 }
 
+/* .slick-prev {
+    z-index: 1000;
+    left: -15% !important;
+}
+
+.slick-mext {
+    z-index: 1000;
+    right: 15% !important;
+} */
 /* Custom styles for the arrows */
 .slick-prev:before,
 .slick-next:before {
+    @apply max-sm:hidden;
     font-size: 40px !important;
     /* Adjust the size of the arrow icons */
     color: #C97B5B !important;
     /* Color of the arrow icons */
-}
-
-.slick-slide>div {
-    height: auto !important;
-    display: flex;
-    /* Flexbox for alignment */
-    align-items: center;
-    /* Center items vertically */
-    justify-content: center;
-    /* Center items horizontally */
-    overflow: hidden;
-    /* Prevent overflowing */
 }
 
 .css-5c9f69 {
@@ -261,5 +269,7 @@ div.card::-webkit-scrollbar-thumb:active {
 /* ++++++++++++++++++++++++++++  Testing with classes ++++++++++++++++++++++++++++  */
 
 .test {
-    color: #fefaf0;
+    color1: #fefaf0, #C97B5B, #C97B5B;
+    color2: #17332A, #C97B5B, #EEB85D, #FEF8E9;
+    colorLight: #275546, #e48b69, #EEB85D, #FEF8E9;
 }
