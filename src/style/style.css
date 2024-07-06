@@ -18,10 +18,11 @@
     z-index: 52;
 }
 .card {
-    @apply border flex flex-col overflow-y-clip relative justify-between cursor-default max-w-sm rounded-lg p-4 bg-slate-100/50 w-fit shadow-md text-center hover:shadow-xl;
-    min-height: 17em;
-    background-color: #FEF8E9;
-    background-color: white;
+    @apply flex flex-col rounded-md bg-neutral-100/80 max-sm:px-2 p-4 overflow-y-clip relative justify-between cursor-default max-w-sm w-fit text-center;
+}
+    
+.card_frame {
+    @apply border rounded-lg bg-slate-100/50 shadow-md hover:shadow-lg;
 }
 
 .title {
@@ -30,10 +31,11 @@
     letter-spacing: 4px;
     font-weight: 400;
     padding: 0.8rem 1.5rem;
+    padding-bottom: 0.1rem;
     /* background-color: #FEF8E9; */
     width: fit-content;
     margin: auto;
-    border-radius: 50px;
+    /* border-radius: 50px; */
     color: #17332A;
 }
 /* .card div {
@@ -154,7 +156,7 @@ img#cardImg:hover {
 
 /* Custom styles for the dots */
 .slick-dots li button:before {
-    font-size: 15px !important;
+    font-size: 10px !important;
     /* Adjust the size of the dots */
     /* border: 1px solid black; */
     padding: 0em !important;
@@ -181,11 +183,14 @@ img#cardImg:hover {
 .slick-prev:before,
 .slick-next:before {
     @apply max-sm:hidden;
-    font-size: 40px !important;
+    font-size: 50px !important;
+    z-index: 70;
+    opacity: 0.5;
     /* Adjust the size of the arrow icons */
     color: #C97B5B !important;
     /* Color of the arrow icons */
 }
+
 
 .css-5c9f69 {
     height: fit-content !important;

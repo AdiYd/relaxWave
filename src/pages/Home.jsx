@@ -5,13 +5,15 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBell, faGift } from '@fortawesome/free-solid-svg-icons';
 import { Carousel } from '../components/MUI';
 import { useNavigate } from 'react-router-dom';
+import useWindowDimensions from '../assets/useWindowDimensions';
 
 
 const Home = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
+  const {width} = useWindowDimensions();
   return (
     <div className="">
-        {homeContent(navigate)}
+        {homeContent(navigate, width)}
     </div>
   );
 };
@@ -20,9 +22,9 @@ export default Home;
 
 
 
-const homeContent = (navigate)=><div className="pageContainer max-sm:px-0">
+const homeContent = (navigate, width)=><div className="pageContainer max-sm:px-0">
 <header className="text-center mb-8 mt-4 fade-in">
-  <h1  className="title border bg-primary-white ">RelaxWave - LifeStyle</h1>
+  <h1  className="title border-b ">RelaxWave</h1>
   <h2 className="mt-4 text-xl">Your gateway to ultimate relaxation and rejuvenation</h2>
 </header>
 
@@ -33,11 +35,12 @@ const homeContent = (navigate)=><div className="pageContainer max-sm:px-0">
   </p>
 </section>
 
-<section className="mb-12 max-sm:px-8">
+<section className="mb-12 max-sm:px-2">
   <h2 className="text-2xl font-bold text-primary mb-4">Featured Products</h2>
   <div className="flex flex-wrap justify-around justify-items-center gap-4">
+  <div className='grid grid-cols-3 gap-8 max-sm:grid-cols-2 max-sm:gap-2'>
     {products.map((item, index)=>(
-      item.id <31 && <ProductCard  
+      item.id <41 && <ProductCard  
         key={index}
         buttonText='View Item'
         showPrice = {false} 
@@ -46,24 +49,37 @@ const homeContent = (navigate)=><div className="pageContainer max-sm:px-0">
         showProductCount={false} 
         isSale={true} showDiscount={item.id === 20} productData={item} />
     ))}
+    </div>
   </div>
 </section>
 
 <section className="mb-12 max-sm:px-8">
       <h2 className="text-2xl font-bold text-primary text-center mb-4">Special discounts offers</h2>
       <div className="flex items-center my-8 justify-around flex-wrap gap-4">
-      <div className='w-2/3 mx-auto max-sm:w-full'>
-        <Carousel  >
-        <div className='flex justify-center'>
-        <ProductCard
-          buttonText='View Item'
-          showPrice = {false} 
-          onBtnClick={()=>{navigate(`products/${products[9].title}`)}}
-          imageClass='w-5/6 max-h-56 mx-auto rounded-full shadow-md object-cover' 
-          showProductCount={false} showDiscount={true}
-          productData={products[9]} />
+      <div className='w-4/5 mx-auto max-sm:w-full'>
+        <Carousel slideGap={10} slidesToShow={width < 680 ? 1 :3} >
+          {products.map((item, index)=>(
+            <div className='flex mx-3 justify-center'>
+              <ProductCard  
+                key={index}
+                buttonText='View Item'
+                showPrice = {false} 
+                onBtnClick={()=>{navigate(`products/${item.title}`)}}
+                imageClass='w-5/6 max-h-56 mx-auto rounded-full shadow-md object-cover'
+                showProductCount={false} 
+                isSale={true} showDiscount={item.id === 20} productData={item} />
+            </div>
+           ))}
+        <div className='flex mx-3 justify-center'>
+          <ProductCard
+            buttonText='View Item'
+            showPrice = {false} 
+            onBtnClick={()=>{navigate(`products/${products[9].title}`)}}
+            imageClass='w-5/6 max-h-56 mx-auto rounded-full shadow-md object-cover' 
+            showProductCount={false} showDiscount={true}
+            productData={products[9]} />
           </div>
-        <div className='flex justify-center'>
+        <div className='flex mx-3 justify-center'>
           <ProductCard
           buttonText='View Item' 
           showPrice = {false}         
@@ -95,7 +111,7 @@ const homeContent = (navigate)=><div className="pageContainer max-sm:px-0">
   </div>
 </section>
 
-<section className="bg-primary/90 text-primary-white fill-primary-white p-6 text-center border rounded-2xl w-4/5 mx-auto max-sm:w-full max-sm:px-4">
+<section className="bg-primary/90 text-primary-white fill-primary-white p-6 text-center border rounded-2xl w-4/5 mx-auto max-sm:w-full max-sm:px-4 max-sm:border-none max-sm:rounded-none">
   <div className="flex items-center justify-center gap-8 mb-8 max-sm:gap-4 max-sm:flex-col">
       <FontAwesomeIcon className='shake text-orange-400' icon={faBell} size='xl' color='inherit' />
      <h2 className="text-xl">🎁  &nbsp; Subscribe for Sales and Promotions  &nbsp; 🎉</h2>
@@ -104,7 +120,7 @@ const homeContent = (navigate)=><div className="pageContainer max-sm:px-0">
     <div className="flex items-center justify-around w-full max-sm:flex-col">
         <input type="name" required placeholder="Name" className=" focus-visible:outline-primary-orange text-center inputField my-2 w-2/5 max-sm:w-4/5 max-sm:mx-auto" />
         <input type="email" required placeholder="Email" className=" focus-visible:outline-primary-orange text-center inputField my-2 w-2/5 max-sm:w-4/5 max-sm:mx-auto" />
-        <button className="cool-button text-sm h-min p-2 max-sm:w-4/5 max-sm:m-auto">Subscribe</button>
+        <button className="cool-button my-2 text-sm h-min p-2 max-sm:w-4/5 max-sm:m-auto">Subscribe</button>
     </div>
     <label className="flex justify-center my-4 items-center">
       <input type="checkbox" defaultChecked className="mr-2" />

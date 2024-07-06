@@ -58,7 +58,7 @@ const Item = ({productData=productInfo[0] ,maxQuantity=10, minQuantity=1}) => {
     }
 
   return (
-    <div id='itemContainer' className="w-full rounded-lg border p-4 max-sm:px-0 max-sm:border-none">
+    <div id='itemContainer' className="w-full mx-auto rounded-lg p-4 max-sm:px-0 max-sm:border-none">
        <div className="block flex-col md:flex-row">
          {/* Item options menu */}
          <div className="w-full z-40 p-4 h-fit mx-2 ml-8 float-right md:w-1/3  bg-gray-50 rounded-lg shadow-xl border">

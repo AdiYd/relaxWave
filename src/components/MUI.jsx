@@ -1,6 +1,6 @@
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
-import React, { useState } from 'react';
+import React, { Children, useState } from 'react';
 import ProductCard from './ProductCard';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
@@ -22,10 +22,11 @@ export const Carousel = ({onClick, children , ...props}) => {
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
+    ...props
   };
 
   return (
-    <Slider {...props} className='w-11/12 items-center justify-center mb-12 mx-auto' {...settings}>
+    <Slider  className='w-11/12 items-center justify-center mb-12 mx-auto' {...settings}>
             {children}
     </Slider>
   );
@@ -85,14 +86,9 @@ export const StyledMenu = () => {
 };
 
 
-export const StyledContainer = () => (
+export const StyledContainer = ({children}) => (
   <Container maxWidth="sm" sx={{ textAlign: 'center', mt: 5 }}>
-    <Typography variant="h4" component="div" gutterBottom>
-      Welcome to My Page
-    </Typography>
-    <Typography variant="body1">
-      This is a simple container to center content on the page.
-    </Typography>
+   {children}
   </Container>
 );
 

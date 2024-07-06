@@ -33,7 +33,7 @@ const Collage = ({imageList=[], count=4}) => {
         index>0 && <div key={index} className={`collage-item w-fit h-fit mx-auto shadow-md hover:shadow-lg collage-item-${index % 5}`}>
           <img src={src}
           style={{maxHeight: maxHeight, maxWidth: maxWidth}}
-           alt={`Collage ${index}`} className="collage-img" />
+           alt={`Collage ${index}`} className="collage-img max-sm:h-auto max-sm:w-full" />
         </div>
       ))}
     </div>

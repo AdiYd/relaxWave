@@ -158,9 +158,9 @@ const Header = () => {
       <Offset />
     </div>
     {(!cartEmpty&& page!=='Cart') && <div title='Checkout'
-            className='rounded-full cursor-pointer z-50 shadow-lg hover:shadow-xl border fixed top-1/2 right-2 w-fit h-fit'>
+            className='rounded-full bg-white/80 cursor-pointer z-50 shadow-lg hover:shadow-xl border fixed bottom-1/4 right-2 w-fit h-fit'>
             <Link className='cursor-pointer' to={'/Cart'}>
-              {refBagFull(cart.length, 'w-16 h-16')}
+              {refBagFull(cart.length, 'w-16 h-16 max-sm:w-12 max-sm:h-12')}
             </Link>
         </div>}
     </>

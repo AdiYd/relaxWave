@@ -97,28 +97,29 @@ const ProductCard = ({
       alt={productData.name} className={imageClass} />
       </div>
       <div  onClick={onClick}>
-      <h3 className="font-bold text-lg mt-2 mx-auto">{productData.title}</h3>
+      <h4 className="font-bold text-primary text-lg max-sm:text-base mt-2 mx-auto">{productData.title}</h4>
       <hr className='mb-2 mt-0 mx-auto w-2/3 border-b' />
       <p className="text-gray-500 text-sm">{productData.description}</p>
       </div>
-      {showPrice && <div  onClick={onClick} className="mt-4 mx-auto">
+      {showPrice && <div  onClick={onClick} className="mt-4 mx-auto flex justify-center">
         {productData.originalPrice &&
-        <div className="relative w-fit mx-auto">
+        <div className="relative w-fit mx-auto max-sm:text-xs">
           {isSale &&  <SaleIcon />}
-          <span className="line-through text-gray-500">${productData.originalPrice}</span>
+          <p className="line-through text-gray-500">${productData.originalPrice}</p>
         </div>}
-        <span className="font-bold text-xl text-red-800 ml-2">{currDict[productData.price]}{productData.price}</span>
+        <p className="font-bold md:text-xl text-red-800 ml-2">{currDict[productData.price]}{productData.price}</p>
       </div>}
         {(showProductCount && showButton )?  
               <div className="flex w-full align-baseline justify-between mx-auto items-center mt-4">
                   <Button
-                  variant='contained' color='info'                  
+                  variant='contained' color='info'                
+                  sx={{textWrap:'nowrap'}}  
                   onClick={onClickHandler}  className="btn-primary mx-2">{buttonText}</Button>
                   <div className="flex w-fit items-center">
                       <IconButton 
                       onClick={handleDecreaseQuantity} 
                       disabled={quantity <= minQuantity} 
-                      sx = {{paddingX:'1em'}}
+                      sx = {{paddingX:'0.5em'}}
                       className={quantity <= minQuantity ? 'opacity-80' : ''}>
                         -
                       </IconButton>
@@ -126,14 +127,15 @@ const ProductCard = ({
                         type="number"
                         fullWidth={true}
                         value={quantity}
+                        sx={{width:'fit-content'}}
                         onChange={(e) => setQuantity(Number(e.target.value))}
-                        inputProps={{ min: minQuantity, max: maxQuantity, className: 'text-center w-12' }}
-                        className="mx-2"
+                        inputProps={{ min: minQuantity, max: maxQuantity, className: 'text-center w-8' }}
+                        // className="mx-2"
                       />
                       <IconButton 
                       onClick={handleIncreaseQuantity} 
                       disabled={quantity >= maxQuantity} 
-                      sx = {{paddingX:'1em'}}
+                      sx = {{paddingX:'0.5em'}}
                       className={quantity >= maxQuantity ? 'opacity-80' : ''}>
                         +
                       </IconButton>
@@ -144,6 +146,7 @@ const ProductCard = ({
                     variant="contained" 
                     color='info'
                     onClick={onClickHandler} 
+                    sx={{textWrap:'nowrap'}}  
                     className="btn-primary w-2/3 rounded-md self-center mx-auto">{buttonText}</Button>
               </div>
              }

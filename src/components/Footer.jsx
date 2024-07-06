@@ -6,13 +6,13 @@ import { Link } from 'react-router-dom';
 const SocialIcons = () => (
   <div className="flex w-full justify-between gap-2">
     <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer">
-      <FontAwesomeIcon icon={faInstagram} size="2x" className="text-pink-500 hover:fill-slate-200" />
+      <FontAwesomeIcon icon={faInstagram} size="xl" className="text-pink-500 hover:fill-slate-200" />
     </a>
     <a href="https://www.tiktok.com" target="_blank" rel="noopener noreferrer">
-      <FontAwesomeIcon icon={faTiktok} size="2x" className="text-black hover:fill-slate-200" />
+      <FontAwesomeIcon icon={faTiktok} size="xl" className="text-black hover:fill-slate-200" />
     </a>
     <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">
-      <FontAwesomeIcon icon={faFacebook} size="2x" className="text-blue-600 hover:fill-slate-200" />
+      <FontAwesomeIcon icon={faFacebook} size="xl" className="text-blue-600 hover:fill-slate-200" />
     </a>
   </div>
 );
@@ -31,7 +31,6 @@ const Footer = () => {
           </ul>
         </div>
         <div className='w-1/4 px-2 text-center max-sm:w-1/2'>
-          <h2 className="font-bold my-4">Connect</h2>
             <SocialIcons />
         </div>
       </div>
