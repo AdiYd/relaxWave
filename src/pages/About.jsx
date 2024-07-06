@@ -49,7 +49,7 @@ const About = () => {
   return (
     <div className="pageContainer max-sm:px-4">
       <div className="text-center mb-8 mt-4 fade-in">
-        <h1 className="text-3xl font-bold text-center mb-8">About Us</h1>
+        <h1 className="text-3xl text-primary font-bold text-center mb-8">About Us</h1>
         <p className="text-lg text-center mb-12">
           Welcome to RelaxWave, where tranquility meets technology. Our journey began with a simple mission: to enhance the well-being of individuals through innovative relaxation solutions. Today, we proudly stand as a global leader in providing top-notch relaxation products that have transformed lives around the world.
         </p>

@@ -33,6 +33,7 @@ const PageWrapper = () => {
     }
 };
 
+
 // JavaScript to handle scroll event
 window.addEventListener('scroll', () => {
   const navbar = document.getElementById('navbar');
@@ -57,7 +58,7 @@ const App = () => {
     <CartProvider>
       <Router>
         <HeaderMui />
-        <main className="flex-grow" style={{minHeight:'75vh'}}>
+        <main className="flex-grow relative" style={{minHeight:'75vh'}}>
           <Routes>
             <Route path='*' index element={<Home />} />
             <Route path="/" element={<Home />} />

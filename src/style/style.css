@@ -70,7 +70,7 @@ div.card::-webkit-scrollbar-thumb:active {
 }
 
 .footerLink{
-    @apply text-gray-400 text-sm hover:text-white;
+    @apply text-gray-400 text-sm hover:text-primary;
 }
 
 .pageContainer {
@@ -244,6 +244,9 @@ img#cardImg:hover {
     transform: scale(1.1) rotate(5deg);
 }
 
+.shake {
+    animation: shake 0.7s alternate ease-in-out infinite forwards;
+}
 /* ++++++++++++++++++++++++++++ Keyframe Animations ++++++++++++++++++++++++++++ */
 @keyframes fadeIn {
     0% {
@@ -265,6 +268,27 @@ img#cardImg:hover {
     }
 }
 
+@keyframes shake {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    25% {
+        transform: rotate(20deg);
+    }
+
+    50% {
+        transform: rotate(0deg);
+    }
+
+    75% {
+        transform: rotate(-20deg);
+    }
+
+    100% {
+        transform: rotate(0deg);
+    }
+}
 /* ++++++++++++++++++++++++++++ Usage ++++++++++++++++++++++++++++ */
 .fade-in {
     animation: fadeIn 1s ease-in-out;
@@ -283,5 +307,5 @@ img#cardImg:hover {
 .test {
     color1: #fefaf0, #C97B5B, #C97B5B;
     color2: #17332A, #C97B5B, #EEB85D, #FEF8E9;
-    colorLight: #275546, #e48b69, #EEB85D, #FEF8E9;
+    colorLight: #17332a88, #e48b69, #EEB85D, #FEF8E9;
 }

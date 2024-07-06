@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import { StyledButton } from './MUI';
 import { Button, IconButton, TextField } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
+import { currDict } from './Item';
 
 
 const SaleIcon = (...props) => (
@@ -29,14 +30,14 @@ const SaleIcon = (...props) => (
 
 const defaultImageClass = "w-full mx-auto max-h-56 shadow rounded-md object-cover";
 const ProductCard = ({ 
-  product,
+  productData,
   minQuantity = 1,
   maxQuantity = 10,
   showProductCount = true ,
   showPrice = true, 
   showButton = true,
   buttonText = 'Add to Cart',
-  onBtnClick = (e)=>{console.log(e.target.innerText, ' Clicked!')},
+  onBtnClick = (e)=>{console.log(e.target?.innerText, ' Clicked!')},
   onClick,
   imageWidth,
   isSale = false,
@@ -46,7 +47,7 @@ const ProductCard = ({
   imageClass =  defaultImageClass,
   cardHeight }) => {
     const [quantity, setQuantity] = useState(1);
-    const navigate = useNavigate();
+
     const handleDecreaseQuantity = () => {
       if (quantity > minQuantity) {
       setQuantity(quantity - 1);
@@ -59,40 +60,60 @@ const ProductCard = ({
       }
   };
 
-
+  const onClickHandler = ()=>{
+    console.log('Clicked!')
+    let buyingOptions ={};
+    for (let catrgory in productData.buyingOptions){
+      buyingOptions[catrgory] = productData.buyingOptions[catrgory][0]
+    }
+    let customerRequest = {
+      image: process.env.PUBLIC_URL + productData.image,
+      id: productData.id,
+      title: productData.title,
+      options: buyingOptions,
+      quantity,
+      currency: productData.currency,
+      pricePerUnit: productData.price,
+      total: Number(quantity*productData.price).toFixed(2)
+  }
+  console.log('This is Client request: ', customerRequest);
+  onBtnClick(customerRequest)
+  }
 
 
   return (
-    product && <div 
+    productData && <div 
     className="card mx-auto cursor-pointer" style={{height:cardHeight}}>
-      {(product.discount && showDiscount) && <button 
+      {(productData.discount && showDiscount) && <button 
         className="absolute top-4 left-4 px-2 py-1 text-xs rounded-md bg-red-950 text-white">
-        {`${Math.floor(100*(1-product.price/product.originalPrice))}% ${discountText}`}
+        {`${Math.floor(100*(1-productData.price/productData.originalPrice))}% ${discountText}`}
       </button>}
       <div className="w-full block overflow-hidden">
       <img 
       onClick={onClick}
       id='cardImg' 
-      src={process.env.PUBLIC_URL + product.image} 
+      src={process.env.PUBLIC_URL + productData.image} 
       style={{width: `${imageWidth}px`, height:imageWidth ?`${0.8*imageWidth}px`:undefined }}
-      alt={product.name} className={imageClass} />
+      alt={productData.name} className={imageClass} />
       </div>
-      <h3 className="font-bold text-lg mt-2 mx-auto">{product.title}</h3>
+      <div  onClick={onClick}>
+      <h3 className="font-bold text-lg mt-2 mx-auto">{productData.title}</h3>
       <hr className='mb-2 mt-0 mx-auto w-2/3 border-b' />
-      <p className="text-gray-500 text-sm">{product.description}</p>
-      {showPrice && <div className="mt-4 mx-auto">
-        {product.originalPrice &&
+      <p className="text-gray-500 text-sm">{productData.description}</p>
+      </div>
+      {showPrice && <div  onClick={onClick} className="mt-4 mx-auto">
+        {productData.originalPrice &&
         <div className="relative w-fit mx-auto">
           {isSale &&  <SaleIcon />}
-          <span className="line-through text-gray-500">${product.originalPrice}</span>
+          <span className="line-through text-gray-500">${productData.originalPrice}</span>
         </div>}
-        <span className="font-bold text-xl text-red-800 ml-2">${product.price}</span>
+        <span className="font-bold text-xl text-red-800 ml-2">{currDict[productData.price]}{productData.price}</span>
       </div>}
         {(showProductCount && showButton )?  
               <div className="flex w-full align-baseline justify-between mx-auto items-center mt-4">
                   <Button
                   variant='contained' color='info'                  
-                   onClick={onBtnClick} className="btn-primary mx-2">{buttonText}</Button>
+                  onClick={onClickHandler}  className="btn-primary mx-2">{buttonText}</Button>
                   <div className="flex w-fit items-center">
                       <IconButton 
                       onClick={handleDecreaseQuantity} 
@@ -122,7 +143,7 @@ const ProductCard = ({
                     <Button
                     variant="contained" 
                     color='info'
-                    onClick={onBtnClick} 
+                    onClick={onClickHandler} 
                     className="btn-primary w-2/3 rounded-md self-center mx-auto">{buttonText}</Button>
               </div>
              }

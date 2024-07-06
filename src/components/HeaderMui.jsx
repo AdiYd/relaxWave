@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
@@ -12,11 +12,40 @@ import { styled } from '@mui/material/styles';
 import { HeaderLogo, Logo } from './Header';
 import PAGES from '../assets/json/pages.json';
 import { debug } from '../App';
+import { CartContext } from '../context/CartContext';
 
 const Offset = styled('div')(({ theme }) => theme.mixins.toolbar);
 
+
+const refBagFull = (itemCount, className = 'w-16 h-10')=> 
+<svg className={className} aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" fill="red">
+  <path fill="currentColor" fillRule="evenodd" d="M20.5 6.5a4.75 4.75 0 00-4.75 4.75v.56h-3.16l-.77 11.6a5 5 0 004.99 5.34h7.38a5 5 0 004.99-5.33l-.77-11.6h-3.16v-.57A4.75 4.75 0 0020.5 6.5zm3.75 5.31v-.56a3.75 3.75 0 10-7.5 0v.56h7.5zm-7.5 1h7.5v.56a3.75 3.75 0 11-7.5 0v-.56zm-1 0v.56a4.75 4.75 0 109.5 0v-.56h2.22l.71 10.67a4 4 0 01-3.99 4.27h-7.38a4 4 0 01-4-4.27l.72-10.67h2.22z">
+  </path>
+  <circle cx="30" cy="10" r="7" fill="#EEB85D"/>
+  <text x="30" y="10" textAnchor="middle" dy=".3em" fontSize="10" fontWeight={'700'} fill="#17332A">{itemCount}</text>
+</svg>
+
+
+const emptyBag = 
+<svg className="w-16 h-10" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" fill="currentColor">
+  <path fill="currentColor" fillRule="evenodd" d="M20.5 6.5a4.75 4.75 0 00-4.75 4.75v.56h-3.16l-.77 11.6a5 5 0 004.99 5.34h7.38a5 5 0 004.99-5.33l-.77-11.6h-3.16v-.57A4.75 4.75 0 0020.5 6.5zm3.75 5.31v-.56a3.75 3.75 0 10-7.5 0v.56h7.5zm-7.5 1h7.5v.56a3.75 3.75 0 11-7.5 0v-.56zm-1 0v.56a4.75 4.75 0 109.5 0v-.56h2.22l.71 10.67a4 4 0 01-3.99 4.27h-7.38a4 4 0 01-4-4.27l.72-10.67h2.22z"/>
+</svg>
+
+
+
 const Header = () => {
   const location = useLocation();
+  const {cart} = useContext(CartContext);
+  const [cartEmpty, setCartEmpty] = useState(true);
+
+  useEffect(()=>{
+    if (cart?.length > 0){
+      setCartEmpty(false);
+    }
+    else {
+      setCartEmpty(true);
+    }
+  },[cart])
 
   const setPageName = ()=>{
     let fullPath = location.pathname, currPage;
@@ -57,6 +86,7 @@ const Header = () => {
   };
 
   return (
+    <>
     <div id='navbar'>
       <AppBar sx={{background:'white', color:'#403162'}} position="fixed">
         <Toolbar>
@@ -81,11 +111,12 @@ const Header = () => {
           <div className='ml-4 mr-2 self-end max-sm:self-center max-sm:mx-8'>
           <Link 
           onClick={()=>setPage('Cart')}
-          className={`${page === 'Cart' ? 'text-red-700':'bg-inherit'}`}
+          className={`block ${page === 'Cart' ? 'text-red-700':'bg-inherit'}`}
           to="/cart" style={{ textDecoration: 'none',margin: '0 10px' }}>
-              <IconButton color="inherit">
+            {cartEmpty ? emptyBag : refBagFull(cart.length || 0)}
+              {/* <IconButton color="inherit">
                 <ShoppingBag  />
-              </IconButton>
+              </IconButton> */}
             </Link>
           </div>
           <div className="sectionMobile text-center hidden max-sm:block">
@@ -126,6 +157,13 @@ const Header = () => {
       </AppBar>
       <Offset />
     </div>
+    {(!cartEmpty&& page!=='Cart') && <div title='Checkout'
+            className='rounded-full cursor-pointer z-50 shadow-lg hover:shadow-xl border fixed top-1/2 right-2 w-fit h-fit'>
+            <Link className='cursor-pointer' to={'/Cart'}>
+              {refBagFull(cart.length, 'w-16 h-16')}
+            </Link>
+        </div>}
+    </>
   );
 };
 

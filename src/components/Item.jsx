@@ -1,12 +1,13 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Box, Button, Typography, Select, MenuItem, TextField, IconButton } from '@mui/material';
 import useWindowDimensions from '../assets/useWindowDimensions';
 import productInfo from '../assets/json/productData.json';
 import '../style/item.css';
 import Collage from './Collage/Collage';
 import { Carousel, StyledButton } from './MUI';
+import { CartContext } from '../context/CartContext';
 
-const currDict = {
+export const currDict = {
     usd: '$',      // USA
     eur: '€',      // Europe
     thb: '฿',      // Thailand
@@ -26,6 +27,7 @@ const createObjectFromList = (keysList, defaultValue = '', data)=> {
 
 const Item = ({productData=productInfo[0] ,maxQuantity=10, minQuantity=1}) => {
     const [buyingOptions, setbuyingOptions] = useState(createObjectFromList(Object.keys(productData.buyingOptions),'',productData.buyingOptions));
+    const { cart, addToCart, removeFromCart } = useContext(CartContext);
     const {width} = useWindowDimensions();
     const [quantity, setQuantity] = useState(1);
     const handleDecreaseQuantity = () => {
@@ -42,13 +44,17 @@ const Item = ({productData=productInfo[0] ,maxQuantity=10, minQuantity=1}) => {
 
     const onClickHandler = (e)=>{
         let customerRequest = {
-            ...buyingOptions,
+            image: process.env.PUBLIC_URL + productData.image,
+            id: productData.id,
+            title: productData.title,
+            options: buyingOptions,
             quantity,
             currency: productData.currency,
             pricePerUnit: productData.price,
             total: Number(quantity*productData.price).toFixed(2)
         }
         console.log('This is Client request: ', customerRequest);
+        addToCart(customerRequest);
     }
 
   return (

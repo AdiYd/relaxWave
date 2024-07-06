@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import ProductCard from '../components/ProductCard';
 import { Typography } from '@mui/material';
 import products from '../assets/json/productData.json';
 import { useLocation, useNavigate } from 'react-router-dom';
 import Item from '../components/Item';
+import { CartContext } from '../context/CartContext';
 
 const productsName = products.map(item=>item.title);
 
@@ -18,22 +19,25 @@ const scrollToSection = (targetID = 'itemContainer') => {
 
 const Products = ({productName}) => {
   const [product, setProduct] = useState(productName);
+  const {cart, addToCart, removeFromCart} = useContext(CartContext);
   const location = useLocation();
   const navigate = useNavigate();
-  console.log(location, ' <-- This is your location')
-  console.log('productName: ', productName);
+  // console.log(location, ' <-- This is your location')
   useEffect(()=>{
       if (product !== productName && productsName.includes(productName)){
         setProduct(productName);
       }
-      // else {
-      //   setProduct(undefined);
-      // }
   },[productName, product])
+
+const onAddToCartClick = (customerRequest)=>{
+    console.log('Am here', customerRequest);
+    addToCart(customerRequest);
+}
+
   return (
     <div className="pageContainer max-sm:px-4">
     <div className="text-center mb-8 mt-4 fade-in ">
-      <h1 className="text-3xl font-bold ">Our Products</h1>
+      <h1 className="text-3xl font-bold text-primary ">Our Products</h1>
       <p className="text-lg mb-6">
         Our products carefully picked and designed to enrich your lifestyle and well-being. With our innovative and eco-friendly products. Designed to boost your energy levels, our collection features cool gadgets that promote relaxation, tranquility, and a healthier lifestyle.
       </p>
@@ -48,9 +52,9 @@ const Products = ({productName}) => {
         {products?.map((product,indx) => (
           <ProductCard 
           onClick={()=>{navigate(`/products/${product.title}`); setTimeout(()=>{scrollToSection()},200)}}
-          onBtnClick={()=>navigate(`/products/${product.title}`)}
+          onBtnClick={onAddToCartClick}
           key={indx}  
-          product={product} />
+          productData={product} />
         ))}
       </div>
     </div>

@@ -1,8 +1,9 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useContext} from 'react';
 import { Link } from 'react-router-dom';
 import ShoppingCart from '@mui/icons-material/ShoppingCart';
 import { useNavigate } from 'react-router-dom';
 import PAGES from '../assets/json/pages.json';
+import { CartContext } from '../context/CartContext';
 
 
 export const Logo = ({showText=true, ...props}) => (
@@ -40,7 +41,6 @@ export const Logo = ({showText=true, ...props}) => (
 
 const Header = () => {
   const [page, setPage] = useState('Home');
-
   const onMenuPageClick = (e)=>{
       setPage(e.target.innerText);
   }

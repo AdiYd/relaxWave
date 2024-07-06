@@ -2,7 +2,7 @@ import React from 'react';
 import ProductCard from '../components/ProductCard';
 import products from '../assets/json/productData.json';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faGift } from '@fortawesome/free-solid-svg-icons';
+import { faBell, faGift } from '@fortawesome/free-solid-svg-icons';
 import { Carousel } from '../components/MUI';
 import { useNavigate } from 'react-router-dom';
 
@@ -44,7 +44,7 @@ const homeContent = (navigate)=><div className="pageContainer max-sm:px-0">
         onBtnClick={()=>{navigate(`products/${item.title}`)}}
         imageClass='w-5/6 max-h-56 mx-auto rounded-full shadow-md object-cover'
         showProductCount={false} 
-        isSale={true} showDiscount={item.id === 20} product={item} />
+        isSale={true} showDiscount={item.id === 20} productData={item} />
     ))}
   </div>
 </section>
@@ -61,7 +61,7 @@ const homeContent = (navigate)=><div className="pageContainer max-sm:px-0">
           onBtnClick={()=>{navigate(`products/${products[9].title}`)}}
           imageClass='w-5/6 max-h-56 mx-auto rounded-full shadow-md object-cover' 
           showProductCount={false} showDiscount={true}
-          product={products[9]} />
+          productData={products[9]} />
           </div>
         <div className='flex justify-center'>
           <ProductCard
@@ -71,7 +71,7 @@ const homeContent = (navigate)=><div className="pageContainer max-sm:px-0">
           imageClass='w-5/6 max-h-56 mx-auto rounded-full shadow-md object-cover'  
           showProductCount={false} 
           showDiscount={true}
-          product={products[7]} />
+          productData={products[7]} />
           </div>
         </Carousel>
         </div>
@@ -95,10 +95,10 @@ const homeContent = (navigate)=><div className="pageContainer max-sm:px-0">
   </div>
 </section>
 
-<section className="bg-primary/90 text-primary-white p-6 text-center border rounded-2xl w-4/5 mx-auto max-sm:w-full max-sm:px-4">
+<section className="bg-primary/90 text-primary-white fill-primary-white p-6 text-center border rounded-2xl w-4/5 mx-auto max-sm:w-full max-sm:px-4">
   <div className="flex items-center justify-center gap-8 mb-8 max-sm:gap-4 max-sm:flex-col">
-      <FontAwesomeIcon icon={faGift} size='xl' color='#17332A' />
-     <h2 className="text-xl">Subscribe for Sales and Promotions</h2>
+      <FontAwesomeIcon className='shake text-orange-400' icon={faBell} size='xl' color='inherit' />
+     <h2 className="text-xl">🎁  &nbsp; Subscribe for Sales and Promotions  &nbsp; 🎉</h2>
   </div>
   <form className="flex flex-col md:items-center md:space-x-4 max-sm:flex-col">
     <div className="flex items-center justify-around w-full max-sm:flex-col">
