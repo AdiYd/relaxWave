@@ -8,10 +8,10 @@
     "carouselImage": [],
     "descriptionBody": "Our RelaxWave Massager provides the ultimate relaxation experience by precisely targeting stress points, alleviating pain, and enhancing overall well-being.",
     "video": "https://www.youtube.com/embed/3lh8L6g2tPs",
-    "oldPrice": 199.99,
+    "originalPrice": 199.99,
     "currency": "usd",
     "price": 149.99,
-    "discount": 25,
+    "discount": true,
     "buyingOptions": {
       "Items": ["Item 1", "Item 2", "Item 3"],
       "Color": ["White", "Black", "Blue"],
@@ -27,10 +27,10 @@
     "carouselImage": [],
     "descriptionBody": "The CalmWave Light Projector transforms your space into a tranquil oasis, with customizable light patterns that mimic the gentle movement of ocean waves, promoting relaxation and peace.",
     "video": "https://www.youtube.com/embed/3lh8L6g2tPs",
-    "oldPrice": 99.99,
+    "originalPrice": 99.99,
     "currency": "usd",
     "price": 79.99,
-    "discount": 20,
+    "discount": true,
     "buyingOptions": {
       "Items": ["Item 1", "Item 2", "Item 3"],
       "Color": ["White", "Black", "Blue"],
@@ -46,10 +46,10 @@
     "carouselImage": [],
     "descriptionBody": "Enhance your environment with the WaveAroma Diffuser, which releases calming scents to promote relaxation and improve overall wellness, making your space a sanctuary.",
     "video": "https://www.youtube.com/embed/3lh8L6g2tPs",
-    "oldPrice": 59.99,
+    "originalPrice": 59.99,
     "currency": "usd",
     "price": 49.99,
-    "discount": 16,
+    "discount": true,
     "buyingOptions": {
       "Items": ["Item 1", "Item 2", "Item 3"],
       "Color": ["White", "Black", "Blue"],
@@ -65,10 +65,10 @@
     "carouselImage": [],
     "descriptionBody": "The TranquilSound Machine is designed to help you drift off to sleep effortlessly. With a variety of soothing sounds, it creates the perfect sleep environment, helping you to relax and enjoy a restful night’s sleep.",
     "video": "https://www.youtube.com/embed/3lh8L6g2tPs",
-    "oldPrice": 79.99,
+    "originalPrice": 79.99,
     "currency": "usd",
     "price": 64.99,
-    "discount": 19,
+    "discount": true,
     "buyingOptions": {
       "Items": ["Item 1", "Item 2", "Item 3"],
       "Color": ["White", "Black", "Blue"],
@@ -84,10 +84,10 @@
     "carouselImage": [],
     "descriptionBody": "The ZenMat Acupressure Mat is designed to relieve stress and pain by stimulating pressure points across your body. This mat promotes relaxation and healing, making it a great addition to your wellness routine.",
     "video": "https://www.youtube.com/embed/3lh8L6g2tPs",
-    "oldPrice": 49.99,
+    "originalPrice": 49.99,
     "currency": "usd",
     "price": 39.99,
-    "discount": 20,
+    "discount": true,
     "buyingOptions": {
       "Items": ["Item 1", "Item 2", "Item 3"],
       "Color": ["White", "Black", "Blue"],
@@ -103,10 +103,10 @@
     "carouselImage": [],
     "descriptionBody": "The HarmonyLight Smart Bulb offers customizable lighting options to match your mood and environment. With smart controls, you can easily adjust the light settings via an app or voice assistant, providing a seamless and modern lighting solution.",
     "video": "https://www.youtube.com/embed/3lh8L6g2tPs",
-    "oldPrice": 49.99,
+    "originalPrice": 49.99,
     "currency": "usd",
     "price": 39.99,
-    "discount": 20,
+    "discount": true,
     "buyingOptions": {
       "Items": ["Item 1", "Item 2", "Item 3"],
       "Color": ["White", "Black", "Blue"],
@@ -122,10 +122,29 @@
     "carouselImage": [],
     "descriptionBody": "The SereneSound Bluetooth Speaker provides high-quality sound and ambient music, making it perfect for creating a relaxing environment at home. Connect it to your devices wirelessly and enjoy your favorite tunes in style.",
     "video": "https://www.youtube.com/embed/3lh8L6g2tPs",
-    "oldPrice": 89.99,
+    "originalPrice": 89.99,
     "currency": "usd",
     "price": 69.99,
-    "discount": 22,
+    "discount": true,
+    "buyingOptions": {
+      "Items": ["Item 1", "Item 2", "Item 3"],
+      "Color": ["White", "Black", "Blue"],
+      "Size": ["xl", "l", "m", "s", "xs"]
+    }
+  },
+  {
+    "title": "AromaWave Essential Oil Diffuser",
+    "id": 80,
+    "description": "Fill your home with soothing scents using the AromaWave Essential Oil Diffuser. Features a sleek design and multiple mist modes for a calming atmosphere.",
+    "image": "/assets/product8.png",
+    "collageImage": [],
+    "carouselImage": [],
+    "descriptionBody": "The AromaWave Essential Oil Diffuser combines sleek design with functionality, allowing you to fill your home with calming scents. It features multiple mist modes to create the perfect relaxing atmosphere.",
+    "video": "https://www.youtube.com/embed/3lh8L6g2tPs",
+    "originalPrice": 59.99,
+    "currency": "usd",
+    "price": 44.99,
+    "discount": true,
     "buyingOptions": {
       "Items": ["Item 1", "Item 2", "Item 3"],
       "Color": ["White", "Black", "Blue"],
@@ -141,16 +160,33 @@
     "carouselImage": [],
     "descriptionBody": "The ZenGarden Mini Indoor Garden is a compact, self-watering garden that brings a touch of nature indoors. Perfect for growing small plants and herbs, it adds a green and serene element to any room.",
     "video": "https://www.youtube.com/embed/3lh8L6g2tPs",
-    "oldPrice": 39.99,
+    "originalPrice": 39.99,
     "currency": "usd",
     "price": 29.99,
-    "discount": 25,
+    "discount": true,
+    "buyingOptions": {
+      "Items": ["Item 1", "Item 2", "Item 3"],
+      "Color": ["White", "Black", "Blue"],
+      "Size": ["xl", "l", "m", "s", "xs"]
+    }
+  },
+  {
+    "title": "ChillMist Ultrasonic Humidifier",
+    "id": 100,
+    "description": "Maintain optimal humidity levels in your home with the ChillMist Ultrasonic Humidifier. Features a quiet operation and adjustable mist settings.",
+    "image": "/assets/product10.png",
+    "collageImage": [],
+    "carouselImage": [],
+    "descriptionBody": "The ChillMist Ultrasonic Humidifier ensures that your home maintains optimal humidity levels. With quiet operation and adjustable mist settings, it creates a comfortable and healthy living environment.",
+    "video": "https://www.youtube.com/embed/3lh8L6g2tPs",
+    "originalPrice": 79.99,
+    "currency": "usd",
+    "price": 59.99,
+    "discount": true,
     "buyingOptions": {
       "Items": ["Item 1", "Item 2", "Item 3"],
       "Color": ["White", "Black", "Blue"],
       "Size": ["xl", "l", "m", "s", "xs"]
     }
   }
-
-
-  ]
+]

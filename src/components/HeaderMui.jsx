@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
@@ -11,21 +11,41 @@ import ShoppingBag from '@mui/icons-material/ShoppingBag';
 import { styled } from '@mui/material/styles';
 import { HeaderLogo, Logo } from './Header';
 import PAGES from '../assets/json/pages.json';
+import { debug } from '../App';
 
 const Offset = styled('div')(({ theme }) => theme.mixins.toolbar);
 
 const Header = () => {
   const location = useLocation();
-  const [anchorEl, setAnchorEl] = useState(null);
-  const [page, setPage] = useState(()=>{
-    let currPage = location.pathname.slice(1,2).toUpperCase() + location.pathname.slice(2).toLowerCase();
+
+  const setPageName = ()=>{
+    let fullPath = location.pathname, currPage;
+    if (fullPath.startsWith('/')){
+      fullPath = fullPath.slice(1);
+    }
+    if (fullPath.includes('/')){
+      currPage = fullPath.slice(0,1).toUpperCase() + fullPath.slice(1,fullPath.indexOf('/')).toLowerCase();
+    }
+    else {
+        currPage = fullPath.slice(0,1).toUpperCase() + fullPath.slice(1).toLowerCase();
+    }
     if (Object.keys(PAGES).includes(currPage)){
       return  currPage
     }
     else{
       return 'Home'
     }
-  });
+  }
+
+  const [anchorEl, setAnchorEl] = useState(null);
+  const [page, setPage] = useState(setPageName);
+
+
+
+  useEffect(()=>{
+    debug('Entering page name: ', setPageName())
+    setPage(setPageName)  
+  },[location.pathname])
 
   const handleMenu = (event) => {
     setAnchorEl(event.currentTarget);
@@ -47,7 +67,7 @@ const Header = () => {
           </Typography>
           <div className="sectionDesktop rtl w-1/2  self-end flex justify-around max-sm:hidden">
             {Object.keys(PAGES).map((item, index)=>(
-              <Typography key={index} variant="button">
+             item !=='Cart' && <Typography key={index} variant="button">
                 <Link to={PAGES[item]} 
                 onClick={()=>setPage(item)}
                 className={`mx-8 font-bold ${page===item ? 'text-red-700':''}`}>{item}</Link>
@@ -59,9 +79,12 @@ const Header = () => {
                 <h1 style={{fontFamily:'cursive'}}>RelaxWave</h1>
           </div>
           <div className='ml-4 mr-2 self-end max-sm:self-center max-sm:mx-8'>
-          <Link to="/cart" style={{ textDecoration: 'none', color: 'inherit', margin: '0 10px' }}>
+          <Link 
+          onClick={()=>setPage('Cart')}
+          className={`${page === 'Cart' ? 'text-red-700':'bg-inherit'}`}
+          to="/cart" style={{ textDecoration: 'none',margin: '0 10px' }}>
               <IconButton color="inherit">
-                <ShoppingBag />
+                <ShoppingBag  />
               </IconButton>
             </Link>
           </div>

@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import { StyledButton } from './MUI';
 import { Button, IconButton, TextField } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
 
 
 const SaleIcon = (...props) => (
@@ -35,14 +36,17 @@ const ProductCard = ({
   showPrice = true, 
   showButton = true,
   buttonText = 'Add to Cart',
-  onClick = (e)=>{console.log(e.target.innerText, ' Clicked!')},
+  onBtnClick = (e)=>{console.log(e.target.innerText, ' Clicked!')},
+  onClick,
   imageWidth,
   isSale = false,
-  discountPrecent,
+  showDiscount = false,
   discountText = 'OFF',
+  linkToItem = true,
   imageClass =  defaultImageClass,
   cardHeight }) => {
     const [quantity, setQuantity] = useState(1);
+    const navigate = useNavigate();
     const handleDecreaseQuantity = () => {
       if (quantity > minQuantity) {
       setQuantity(quantity - 1);
@@ -59,19 +63,21 @@ const ProductCard = ({
 
 
   return (
-    product && <div className="card mx-auto" style={{height:cardHeight}}>
-      {discountPrecent && <button 
+    product && <div 
+    className="card mx-auto cursor-pointer" style={{height:cardHeight}}>
+      {(product.discount && showDiscount) && <button 
         className="absolute top-4 left-4 px-2 py-1 text-xs rounded-md bg-red-950 text-white">
-        {`${discountPrecent}% ${discountText}`}
+        {`${Math.floor(100*(1-product.price/product.originalPrice))}% ${discountText}`}
       </button>}
       <div className="w-full block overflow-hidden">
       <img 
+      onClick={onClick}
       id='cardImg' 
       src={process.env.PUBLIC_URL + product.image} 
       style={{width: `${imageWidth}px`, height:imageWidth ?`${0.8*imageWidth}px`:undefined }}
       alt={product.name} className={imageClass} />
       </div>
-      <h3 className="font-bold text-lg mt-2 mx-auto">{product.name}</h3>
+      <h3 className="font-bold text-lg mt-2 mx-auto">{product.title}</h3>
       <hr className='mb-2 mt-0 mx-auto w-2/3 border-b' />
       <p className="text-gray-500 text-sm">{product.description}</p>
       {showPrice && <div className="mt-4 mx-auto">
@@ -80,11 +86,13 @@ const ProductCard = ({
           {isSale &&  <SaleIcon />}
           <span className="line-through text-gray-500">${product.originalPrice}</span>
         </div>}
-        <span className="font-bold text-xl text-red-800 ml-2">${product.discountedPrice}</span>
+        <span className="font-bold text-xl text-red-800 ml-2">${product.price}</span>
       </div>}
         {(showProductCount && showButton )?  
               <div className="flex w-full align-baseline justify-between mx-auto items-center mt-4">
-                  <StyledButton onClick={onClick} className="btn-primary mx-2">{buttonText}</StyledButton>
+                  <Button
+                  variant='contained' color='info'                  
+                   onClick={onBtnClick} className="btn-primary mx-2">{buttonText}</Button>
                   <div className="flex w-fit items-center">
                       <IconButton 
                       onClick={handleDecreaseQuantity} 
@@ -113,8 +121,8 @@ const ProductCard = ({
              <div className='mt-4 items-center w-full p0 mb-0'>
                     <Button
                     variant="contained" 
-                    color="primary"
-                    onClick={onClick} 
+                    color='info'
+                    onClick={onBtnClick} 
                     className="btn-primary w-2/3 rounded-md self-center mx-auto">{buttonText}</Button>
               </div>
              }

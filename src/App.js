@@ -23,7 +23,7 @@ const PageWrapper = () => {
       for (let item of products){
         if (item?.title === arg){
           debug('Routing to : ', arg);
-          return <Products paoductName={arg} />;
+          return <Products productName={arg} />;
         }
       }
       return <Products />

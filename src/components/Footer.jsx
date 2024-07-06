@@ -19,7 +19,7 @@ const SocialIcons = () => (
 
 const Footer = () => {
   return (
-    <footer className="bg-primary-dark/90 border-t text-white p-4 pt-8">
+    <footer className="bg-white border-t shadow-lg  text-primary-light p-4 pt-8">
       <div className="flex justify-between items-center">
         <div className='w-3/4'>
           <h2 className="font-bold my-4">RelaxWave</h2>

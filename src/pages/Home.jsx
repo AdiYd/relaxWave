@@ -1,6 +1,6 @@
 import React from 'react';
 import ProductCard from '../components/ProductCard';
-import products from '../assets/json/products.json';
+import products from '../assets/json/productData.json';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGift } from '@fortawesome/free-solid-svg-icons';
 import { Carousel } from '../components/MUI';
@@ -22,7 +22,7 @@ export default Home;
 
 const homeContent = (navigate)=><div className="pageContainer max-sm:px-0">
 <header className="text-center mb-8 mt-4 fade-in">
-  <h1 style={{fontFamily: '"Poppins", sans-serif'}} className="text-3xl font-bold text-gradient-linear ">RelaxWave - LifeStyle</h1>
+  <h1  className="title border bg-primary-white ">RelaxWave - LifeStyle</h1>
   <h2 className="mt-4 text-xl">Your gateway to ultimate relaxation and rejuvenation</h2>
 </header>
 
@@ -36,15 +36,15 @@ const homeContent = (navigate)=><div className="pageContainer max-sm:px-0">
 <section className="mb-12 max-sm:px-8">
   <h2 className="text-2xl font-bold text-primary mb-4">Featured Products</h2>
   <div className="flex flex-wrap justify-around justify-items-center gap-4">
-    {Object.values(products).map((item, index)=>(
-      index <3 && <ProductCard  
+    {products.map((item, index)=>(
+      item.id <31 && <ProductCard  
         key={index}
         buttonText='View Item'
         showPrice = {false} 
-        onClick={()=>{navigate(`products/${item.name}`)}}
+        onBtnClick={()=>{navigate(`products/${item.title}`)}}
         imageClass='w-5/6 max-h-56 mx-auto rounded-full shadow-md object-cover'
         showProductCount={false} 
-        isSale={true} discountPrecent={index===1 ? 10: undefined} product={item} />
+        isSale={true} showDiscount={item.id === 20} product={item} />
     ))}
   </div>
 </section>
@@ -58,20 +58,20 @@ const homeContent = (navigate)=><div className="pageContainer max-sm:px-0">
         <ProductCard
           buttonText='View Item'
           showPrice = {false} 
-          onClick={()=>{navigate(`products/${products[9].name}`)}}
+          onBtnClick={()=>{navigate(`products/${products[9].title}`)}}
           imageClass='w-5/6 max-h-56 mx-auto rounded-full shadow-md object-cover' 
-          showProductCount={false} discountPrecent={15}
-          product={Object.values(products)[9]} />
+          showProductCount={false} showDiscount={true}
+          product={products[9]} />
           </div>
         <div className='flex justify-center'>
           <ProductCard
           buttonText='View Item' 
           showPrice = {false}         
-          onClick={()=>{navigate(`products/${products[7].name}`)}}
+          onBtnClick={()=>{navigate(`products/${products[7].title}`)}}
           imageClass='w-5/6 max-h-56 mx-auto rounded-full shadow-md object-cover'  
           showProductCount={false} 
-          discountPrecent={20}
-          product={Object.values(products)[7]} />
+          showDiscount={true}
+          product={products[7]} />
           </div>
         </Carousel>
         </div>
@@ -95,15 +95,15 @@ const homeContent = (navigate)=><div className="pageContainer max-sm:px-0">
   </div>
 </section>
 
-<section className="bg-blue-300/90 p-6 text-center border rounded-2xl w-4/5 mx-auto max-sm:w-full max-sm:px-4">
+<section className="bg-primary/90 text-primary-white p-6 text-center border rounded-2xl w-4/5 mx-auto max-sm:w-full max-sm:px-4">
   <div className="flex items-center justify-center gap-8 mb-8 max-sm:gap-4 max-sm:flex-col">
       <FontAwesomeIcon icon={faGift} size='xl' color='#17332A' />
      <h2 className="text-xl">Subscribe for Sales and Promotions</h2>
   </div>
   <form className="flex flex-col md:items-center md:space-x-4 max-sm:flex-col">
     <div className="flex items-center justify-around w-full max-sm:flex-col">
-        <input type="name" required placeholder="Name" className=" text-center inputField my-2 w-2/5 max-sm:w-4/5 max-sm:mx-auto" />
-        <input type="email" required placeholder="Email" className=" text-center inputField my-2 w-2/5 max-sm:w-4/5 max-sm:mx-auto" />
+        <input type="name" required placeholder="Name" className=" focus-visible:outline-primary-orange text-center inputField my-2 w-2/5 max-sm:w-4/5 max-sm:mx-auto" />
+        <input type="email" required placeholder="Email" className=" focus-visible:outline-primary-orange text-center inputField my-2 w-2/5 max-sm:w-4/5 max-sm:mx-auto" />
         <button className="cool-button text-sm h-min p-2 max-sm:w-4/5 max-sm:m-auto">Subscribe</button>
     </div>
     <label className="flex justify-center my-4 items-center">

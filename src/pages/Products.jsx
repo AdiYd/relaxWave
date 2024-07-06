@@ -1,21 +1,35 @@
 import React, { useEffect, useState } from 'react';
 import ProductCard from '../components/ProductCard';
-import poroducts from '../assets/json/products.json';
-import { useLocation } from 'react-router-dom';
+import { Typography } from '@mui/material';
+import products from '../assets/json/productData.json';
+import { useLocation, useNavigate } from 'react-router-dom';
 import Item from '../components/Item';
+
+const productsName = products.map(item=>item.title);
+
+const scrollToSection = (targetID = 'itemContainer') => {
+  const section = document.getElementById(targetID);
+  if (section) {
+    section.scrollIntoView({ behavior: 'smooth' });
+  }
+};
+
 
 
 const Products = ({productName}) => {
   const [product, setProduct] = useState(productName);
   const location = useLocation();
+  const navigate = useNavigate();
   console.log(location, ' <-- This is your location')
   console.log('productName: ', productName);
   useEffect(()=>{
-      if (product !== productName){
+      if (product !== productName && productsName.includes(productName)){
         setProduct(productName);
       }
+      // else {
+      //   setProduct(undefined);
+      // }
   },[productName, product])
-
   return (
     <div className="pageContainer max-sm:px-4">
     <div className="text-center mb-8 mt-4 fade-in ">
@@ -25,11 +39,18 @@ const Products = ({productName}) => {
       </p>
     </div>
     <div className='m-4 max-sm:mx-0 rounded-lg'>
-      <Item />
+      { products.map((item, indx)=> item.title === product ? 
+      <Item key={indx} productData={item} />:undefined)}
     </div>
+    {productsName.includes(product) &&
+      <h2 className="text-2xl font-bold text-primary mb-4">Recomended for you :</h2>}
       <div className="p-4 flex flex-wrap gap-y-8 justify-around max-sm:p-8">
-        {Object.values(poroducts)?.map((product,indx) => (
-          <ProductCard key={indx}  product={product} />
+        {products?.map((product,indx) => (
+          <ProductCard 
+          onClick={()=>{navigate(`/products/${product.title}`); setTimeout(()=>{scrollToSection()},200)}}
+          onBtnClick={()=>navigate(`/products/${product.title}`)}
+          key={indx}  
+          product={product} />
         ))}
       </div>
     </div>

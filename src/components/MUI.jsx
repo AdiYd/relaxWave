@@ -2,7 +2,6 @@ import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 import React, { useState } from 'react';
 import ProductCard from './ProductCard';
-import products from '../assets/json/products.json';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import Button from '@mui/material/Button';

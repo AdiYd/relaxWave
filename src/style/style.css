@@ -24,6 +24,18 @@
     background-color: white;
 }
 
+.title {
+    font-family: 'Pacifico', cursive;
+    font-size: 2.5rem;
+    letter-spacing: 4px;
+    font-weight: 400;
+    padding: 0.8rem 1.5rem;
+    /* background-color: #FEF8E9; */
+    width: fit-content;
+    margin: auto;
+    border-radius: 50px;
+    color: #17332A;
+}
 /* .card div {
     width: fit-content;
 }
@@ -128,7 +140,7 @@ img#cardImg:hover {
 .cool-button {
     @apply px-6 rounded-lg font-bold transition-all duration-300 ease-in-out;
     background: linear-gradient(45deg, #F0926D, #EDB95B);
-        color: #17332A;
+    color: #17332A;
     border: 1px solid transparent;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
@@ -136,8 +148,8 @@ img#cardImg:hover {
 .cool-button:hover {
     background: linear-gradient(-45deg, #FEF8E9, #EDB95B);
         /* border-color: #6a11cb; */
-        color: #34254F;
-        box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3);
+    color: #34254F;
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3);
 }
 
 /* Custom styles for the dots */

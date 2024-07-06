@@ -14,6 +14,7 @@
     cursor: pointer;
     overflow: hidden;
     height: fit-content;
+    width: fit-content;
     border-radius: 8px;
     transition: transform 0.3s ease-in-out;
     position: relative;
@@ -31,6 +32,13 @@
     transform: scale(1.15);
 }
 
+.collage-item-main {
+    @apply shadow-lg;
+}
+
+.collage-item-main:hover {
+    animation: button-glow 1s infinite alternate;
+}
 /* Individual item styles for different frames */
 .collage-item-0 {
     border: 1px solid #c97a5b6a;

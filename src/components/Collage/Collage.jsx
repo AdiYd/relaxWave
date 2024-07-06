@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './Collage.css';
+const [maxHeight, maxWidth] = ['200px', 'none'];
 
 const generateImageUrls = (count) => {
   const urls = [];
@@ -15,17 +16,24 @@ const Collage = ({imageList=[], count=4}) => {
   const [images, setImages] = useState(imageList);
 
   useEffect(() => {
-    if (!imageList.length){
+    if (!(imageList.length-1)){
       const imageUrls = generateImageUrls(count);
-      setImages(imageUrls);
+      setImages([...imageList,...imageUrls]);
     }
   }, []);
 
   return (
     <div className="collage-container">
+      <div className={`collage-item w-fit h-fit mx-auto shadow-md hover:shadow-lg collage-item-main`}>
+          <img src={images[0]}
+          style={{maxHeight: maxHeight, maxWidth: maxWidth}}
+           alt={`Item main`} className="collage-img" />
+        </div>
       {images.map((src, index) => (
-        <div key={index} className={`collage-item w-fit h-fit mx-auto shadow-md hover:shadow-lg collage-item-${index % 5}`}>
-          <img src={src} alt={`Collage ${index}`} className="collage-img" />
+        index>0 && <div key={index} className={`collage-item w-fit h-fit mx-auto shadow-md hover:shadow-lg collage-item-${index % 5}`}>
+          <img src={src}
+          style={{maxHeight: maxHeight, maxWidth: maxWidth}}
+           alt={`Collage ${index}`} className="collage-img" />
         </div>
       ))}
     </div>

@@ -52,12 +52,12 @@ const Item = ({productData=productInfo[0] ,maxQuantity=10, minQuantity=1}) => {
     }
 
   return (
-    <div className="w-full p-4 max-sm:px-0">
+    <div id='itemContainer' className="w-full rounded-lg border p-4 max-sm:px-0 max-sm:border-none">
        <div className="block flex-col md:flex-row">
          {/* Item options menu */}
          <div className="w-full z-40 p-4 h-fit mx-2 ml-8 float-right md:w-1/3  bg-gray-50 rounded-lg shadow-xl border">
           <Typography variant="h6" className="mb-2">Price: {currDict[productData.currency]}{productData.price}</Typography>
-          <Typography variant="body2" className="text-secondary mb-4">Discount: {productData.discount}%</Typography>
+          {productData.discount && <Typography variant="body2" className="text-secondary mb-4">Discount: {Math.floor(100*(1-productData.price/productData.originalPrice))}%</Typography>}
             {/*    Select from produt's buying Options   */}
             {Object.keys(productData.buyingOptions).map((item,index)=>(
                 <div key={index} className='my-4'>
@@ -117,10 +117,9 @@ const Item = ({productData=productInfo[0] ,maxQuantity=10, minQuantity=1}) => {
         </div>
          {/* Item Description and Creative */}
         <div className="w-full p-4 max-sm:py-8">
-            <Typography variant="h4" className="text-primary font-bold mb-4">{productData.title}</Typography>
+            <Typography sx={{fontWeight:'700'}} variant="h4" className="text-primary font-bold mb-4">{productData.title}</Typography>
             <Typography variant="body1" className="mb-4">{productData.description}</Typography>
-            {productData.collageImage ?
-            <Collage imageList={productData.collageImage} /> : undefined}
+            <Collage imageList={[process.env.PUBLIC_URL +productData.image,...productData.collageImage]} /> 
             {productData.video ?
                 <div className="my-6 py-4 mx-auto max-sm:px0 overflow-hidden w-fit h-fit">
                 <iframe 

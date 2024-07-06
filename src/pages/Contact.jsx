@@ -2,12 +2,13 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Logo } from '../components/Header';
 import contact from '../assets/json/contact.json';
+import { Button } from '@mui/material';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faWhatsapp } from '@fortawesome/free-brands-svg-icons';
 import {StyledContainer, Carousel, StyledBox, StyledMenu } from '../components/MUI';
 
 export const ContactUs = ({data, whatsApp = false})=>(
-  <section className="bg-purple-300/30 p-6 text-center rounded-lg w-full mx-auto">
+  <section className="bg-primary-white text-primary p-6 text-center rounded-lg w-full mx-auto">
       <Link to={data.linkTo} >
       <h3 className="text-2xl font-semibold text-primary mb-4 hover:text-blue-600">{data.title}</h3>
       </Link>
@@ -51,7 +52,13 @@ const Contact = () => {
             <input type="name"  placeholder="Name" required name='name' className="inputField" />
             <input type="email" placeholder="Email" name='email' required className="inputField" />
             <textarea placeholder="Message" className="inputField h-40"></textarea>
-            <button type="submit" className="bg-primary m-auto w-2/3 text-white px-4 py-2 rounded-md">Send</button>
+            <div className='flex justify-center w-full'>
+            <Button 
+              variant='contained' 
+              color='success'
+              type="submit" 
+              className="bg-primary m-auto w-2/3 h-10 text-white px-4 py-2 rounded-xl">Send</Button>
+            </div>
           </form>
         </div>
         <div className='w-3/4 mx-auto shadow-md max-sm:w-5/6'>
