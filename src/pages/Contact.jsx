@@ -26,8 +26,6 @@ const Contact = () => {
     <div className="pageContainer max-sm:p-0">
       <div className='flex justify-center'>
             <Logo />
-            <SwiperCarousel />
-            {/* {GadgetNestLogo()} */}
       </div>
 
       {/* <div className='testingMUI items-center my-8 py-4 bg-orange-200/50 rounded-lg w-full'>

@@ -15,11 +15,11 @@ export const SwiperCarousel = ({children,...props}) => {
       <Swiper
         className='scroll-my-4 py-4 w-5/6 static'
           modules={[Navigation, Pagination, Scrollbar, A11y]}
-          spaceBetween={50}
+          spaceBetween={15}
           slidesPerView='auto'
           navigation = {width>680}
-          pagination={width >680 ? {dynamicBullets:false, clickable:true}: false} 
-          scrollbar={width<=680}
+          pagination={width >680 && {dynamicBullets:false, clickable:true}} 
+          scrollbar={width<=680 && {draggable: true}}
           loop={true}
           autoplay={{
             delay: 3000,
