@@ -44,13 +44,14 @@ window.addEventListener('scroll', () => {
     navbar.classList.add('hidden');
     navbar.classList.remove('scrolled');
   }
-  else if (window.scrollY > 50) {
+  if (window.scrollY < 500) {
     navbar.classList.add('scrolled');
     navbar.classList.remove('hidden');
-  } else {
-    navbar.classList.remove('scrolled','hidden');
-    navbar.classList.add('menu-transparent');
   }
+  //  else {
+  //   navbar.classList.remove('scrolled','hidden');
+  //   navbar.classList.add('menu-transparent');
+  // }
 });
 
 const App = () => {

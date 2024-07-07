@@ -1,10 +1,16 @@
 const { orange, yellow } = require('@mui/material/colors');
-
+const defaultTheme = require('tailwindcss/defaultTheme');
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   purge: ['./src/**/*.{js,jsx,ts,tsx}', './public/index.html'],
   darkMode: false, // or 'media' or 'class'
   theme: {
+    screens : {
+      '2xs' : '340px',
+      'xs' : '480px',
+      ...defaultTheme.screens,
+      'sm': '750px'
+    },
     extend: {
       colors: {
           primary: {

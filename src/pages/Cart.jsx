@@ -62,59 +62,62 @@ const CartPage = () => {
       totalItems = Number(totalItems) + Number(item.quantity);
     }
     totalPrice = totalPrice.toFixed(2);
-    cartItems = <ul className='w-fit min-w-96'>
+    cartItems = <ul className='w-full'>
     {cart.map((item, indx) => (
-     <li className=' block w-full p-2 m-2 border-b' key={indx}>
-          <div className='float-right top-4 '>
+     <li className=' block p-2 m-2 border-b' key={indx}>
+          <div className='float-right top-4'>
               <img className='w-20 h-20 rounded-2xl border shadow-lg' src={item.image} alt={item.title} />
               <div className='flex mt-8'>
                    <p className='text-primary font-bold'>Total: ${(item.pricePerUnit * item.quantity).toFixed(2)}</p>
               </div>
           </div>
-         <h4 className='text-start text-primary text-nowrap'>{item.title}</h4>
-         <div className="">
-               <div>
-                 {item.options && Object.keys(item.options).map((option, index)=>(
-                   <span key={index} className=' text-sm flex gap-2'>
-                   <p className='text-primary text-sm font-bold'>{option}:</p>
-                   <p className='text-sm'>{item.options[option]}</p>
-                   </span>
-                 ))}
-               </div>
-               <div className='flex items-center justify-between'>
-                 <p className='text-primary text-sm font-bold'>Quantity:</p>
-                 <div className='flex items-center border'>
-                       <IconButton 
-                       title='הורדת פריט'
-                       onClick={(e)=>handleQuantityChange(item, 'remove')} 
-                       disabled={item.quantity <= 1} 
-                       sx = {{paddingX:'0.5em'}}
-                       className={item.quantity <= 1 ? 'opacity-80' : ''}>
-                         -
-                       </IconButton>
-                       <p
-                           className='px-2'>
-                           {item.quantity}
-                       </p>
-                       <IconButton 
-                       onClick={(e)=>handleQuantityChange(item, 'add')} 
-                        title='הוספת פריט'
-                       disabled={item.quantity >= 10} 
-                       sx = {{paddingX:'0.5em'}}
-                       className={item.quantity >= 10 ? 'opacity-80' : ''}>
-                         +
-                       </IconButton>
-                 </div>
-                 <IconButton
-                    onClick={()=>{removeFromCart(item)}}
-                    title='הסרת פריט'
-                    sx={{marginRight: '2rem', cursor:'pointer'}}
-                    color='primary'>
-           
-                    <FontAwesomeIcon 
-                    icon={faTrashCan} size='sm' color='inherit' />
-                 </IconButton>
-               </div>
+          <div className='pr-8'>
+              <h4 className='text-start text-primary'>{item.title}</h4>
+              <div>
+                  <div>
+                    {item.options && Object.keys(item.options).map((option, index)=>(
+                      <span key={index} className=' text-sm flex gap-2'>
+                      <p className='text-primary text-sm font-bold'>{option}:</p>
+                      <p className='text-sm'>{item.options[option]}</p>
+                      </span>
+                    ))}
+                  </div>
+                  <div className='flex items-center gap-2 max-2xs:flex-col max-2xs:items-start'>
+                      <p className='text-primary text-sm font-bold'>Quantity:</p>
+                      <div className='flex items-center border'>
+                            <IconButton 
+                            title='הורדת פריט'
+                            onClick={(e)=>handleQuantityChange(item, 'remove')} 
+                            disabled={item.quantity <= 1} 
+                            sx = {{paddingX:'0.5em'}}
+                            className={item.quantity <= 1 ? 'opacity-80' : ''}>
+                              -
+                            </IconButton>
+                            <p
+                                className='px-2'>
+                                {item.quantity}
+                            </p>
+                            <IconButton 
+                            onClick={(e)=>handleQuantityChange(item, 'add')} 
+                              title='הוספת פריט'
+                            disabled={item.quantity >= 10} 
+                            sx = {{paddingX:'0.5em'}}
+                            className={item.quantity >= 10 ? 'opacity-80' : ''}>
+                              +
+                            </IconButton>
+                      </div>
+                      <div className=''>
+                      <IconButton
+                          onClick={()=>{removeFromCart(item)}}
+                          title='הסרת פריט'
+                          sx={{marginRight: '2rem', cursor:'pointer'}}
+                          color='primary'>
+                          <FontAwesomeIcon 
+                          icon={faTrashCan} size='sm' color='inherit' />
+                      </IconButton>
+                    </div>
+                  </div>
+              </div>
           </div>
        </li>
          ))}
@@ -130,12 +133,12 @@ const CartPage = () => {
               variant="contained" color="success">
                 Proceed to Payment
               </Button>
-                <div className='my-2 bg-neutral-100/50'>
+                <div className='my-2 bg-neutral-100/50 max-sm:m-auto'>
                   <AddressForm />
                 </div>
                </div>
 
-    fullBagSection = <div className='flex justify-around max-sm:block max-sm:w-fit'>
+    fullBagSection = <div className='flex justify-around max-sm:block'>
                         {cartItems}
                         {itemSum}
                       </div>
@@ -156,7 +159,7 @@ const CartPage = () => {
 
 
   return (
-   <div className='p-8 items-center text-center max-sm:p-4'>
+   <div className='p-4 items-center text-center max-sm:p-0 max-w-full'>
       <Typography variant='h4'  className="font-bold text-primary ">Your Cart</Typography>
       <div className='flex justify-center'>
       {!cart.length ? refBagFull(0) : refBagFull(cart.length)}

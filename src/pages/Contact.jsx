@@ -6,6 +6,7 @@ import { Button } from '@mui/material';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faWhatsapp } from '@fortawesome/free-brands-svg-icons';
 import {StyledContainer, Carousel, StyledBox, StyledMenu } from '../components/MUI';
+import { SwiperCarousel } from '../components/Slider/Slider';
 
 export const ContactUs = ({data, whatsApp = false})=>(
   <section className="bg-primary-white text-primary p-6 text-center rounded-lg w-full mx-auto">
@@ -24,8 +25,9 @@ const Contact = () => {
   return (
     <div className="pageContainer max-sm:p-0">
       <div className='flex justify-center'>
-            {/* <Logo /> */}
-            {GadgetNestLogo()}
+            <Logo />
+            <SwiperCarousel />
+            {/* {GadgetNestLogo()} */}
       </div>
 
       {/* <div className='testingMUI items-center my-8 py-4 bg-orange-200/50 rounded-lg w-full'>

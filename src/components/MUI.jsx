@@ -1,15 +1,10 @@
 import Container from '@mui/material/Container';
-import Typography from '@mui/material/Typography';
-import React, { Children, useState } from 'react';
-import ProductCard from './ProductCard';
+import React, {useState } from 'react';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 import Slider from 'react-slick';
-import { styled } from '@mui/material/styles';
-import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
-import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 

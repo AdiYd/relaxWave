@@ -3,9 +3,9 @@ import ProductCard from '../components/ProductCard';
 import products from '../assets/json/productData.json';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBell, faGift } from '@fortawesome/free-solid-svg-icons';
-import { Carousel } from '../components/MUI';
 import { useNavigate } from 'react-router-dom';
 import useWindowDimensions from '../assets/useWindowDimensions';
+import { SwiperCarousel } from '../components/Slider/Slider';
 
 
 const Home = () => {
@@ -55,11 +55,10 @@ const homeContent = (navigate, width)=><div className="pageContainer max-sm:px-0
 
 <section className="mb-12 max-sm:px-8">
       <h2 className="text-2xl font-bold text-primary text-center mb-4">Special discounts offers</h2>
-      <div className="flex items-center my-8 justify-around flex-wrap gap-4">
-      <div className='w-4/5 mx-auto max-sm:w-full'>
-        <Carousel slideGap={10} slidesToShow={width < 680 ? 1 :3} >
+      <div className="flex relative items-center my-8 justify-around flex-wrap gap-4">
+      <div className='w-5/6 mx-auto max-sm:w-full'>     
+        <SwiperCarousel >
           {products.map((item, index)=>(
-            <div className='flex mx-3 justify-center'>
               <ProductCard  
                 key={index}
                 buttonText='View Item'
@@ -68,18 +67,14 @@ const homeContent = (navigate, width)=><div className="pageContainer max-sm:px-0
                 imageClass='w-5/6 max-h-56 mx-auto rounded-full shadow-md object-cover'
                 showProductCount={false} 
                 isSale={true} showDiscount={item.id === 20} productData={item} />
-            </div>
            ))}
-        <div className='flex mx-3 justify-center'>
-          <ProductCard
+          {/* <ProductCard
             buttonText='View Item'
             showPrice = {false} 
             onBtnClick={()=>{navigate(`products/${products[9].title}`)}}
             imageClass='w-5/6 max-h-56 mx-auto rounded-full shadow-md object-cover' 
             showProductCount={false} showDiscount={true}
             productData={products[9]} />
-          </div>
-        <div className='flex mx-3 justify-center'>
           <ProductCard
           buttonText='View Item' 
           showPrice = {false}         
@@ -87,11 +82,10 @@ const homeContent = (navigate, width)=><div className="pageContainer max-sm:px-0
           imageClass='w-5/6 max-h-56 mx-auto rounded-full shadow-md object-cover'  
           showProductCount={false} 
           showDiscount={true}
-          productData={products[7]} />
-          </div>
-        </Carousel>
-        </div>
+          productData={products[7]} /> */}
+        </SwiperCarousel>
       </div>
+    </div>
   </section>
 
 

@@ -323,8 +323,8 @@ const RTLBox = styled(Box)({
           margin="normal"
         />
         </div>
+        <div className='flex'>
         <FormControlLabel
-        // sx={{marginX:'auto'}}
           control={
             <Checkbox
               name="sendInvoice"
@@ -334,6 +334,8 @@ const RTLBox = styled(Box)({
           }
           label="קבלת חשבונית במייל"
         />
+        </div>
+        <div className='flex'>
         <FormControlLabel
         // sx={{marginX:'auto'}}
           control={
@@ -345,6 +347,7 @@ const RTLBox = styled(Box)({
           }
           label="אישור קבלת חדשות ומבצעים"
         />
+        </div>
         <Button 
           variant="contained" 
           color="secondary" 

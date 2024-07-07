@@ -18,7 +18,7 @@
     z-index: 52;
 }
 .card {
-    @apply flex flex-col rounded-md bg-neutral-100/80 max-sm:px-2 p-4 overflow-y-clip relative justify-between cursor-default max-w-sm w-fit text-center;
+    @apply flex flex-col h-full rounded-md bg-neutral-100/80 max-sm:px-2 p-4 overflow-y-clip relative justify-between cursor-default max-w-sm w-fit text-center;
 }
     
 .card_frame {

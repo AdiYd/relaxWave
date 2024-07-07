@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 #root {
-  @apply w-full max-sm:w-fit
+  @apply w-full max-sm:w-auto
 }
 body {
   font-family: 'Roboto', 'Inter', 'Roboto', sans-serif;
