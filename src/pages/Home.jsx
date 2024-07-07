@@ -2,7 +2,7 @@ import React from 'react';
 import ProductCard from '../components/ProductCard';
 import products from '../assets/json/productData.json';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBell, faGift } from '@fortawesome/free-solid-svg-icons';
+import { faBell, faGift, faL } from '@fortawesome/free-solid-svg-icons';
 import { useNavigate } from 'react-router-dom';
 import useWindowDimensions from '../assets/useWindowDimensions';
 import { SwiperCarousel } from '../components/Slider/Slider';
@@ -62,11 +62,13 @@ const homeContent = (navigate, width)=><div className="pageContainer max-sm:px-0
               <ProductCard  
                 key={index}
                 buttonText='View Item'
-                showPrice = {false} 
+                showPrice = {true} 
+                showDescription= {false}
+                containerClass='w-72 card_frame'
                 onBtnClick={()=>{navigate(`products/${item.title}`)}}
-                imageClass='w-5/6 max-h-56 mx-auto rounded-full shadow-md object-cover'
+                imageClass='w-full max-h-36 mx-auto shadow-md object-cover'
                 showProductCount={false} 
-                isSale={true} showDiscount={item.id === 20} productData={item} />
+                isSale={false} showDiscount={item.id === 20} productData={item} />
            ))}
           {/* <ProductCard
             buttonText='View Item'

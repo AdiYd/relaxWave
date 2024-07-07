@@ -34,6 +34,8 @@ const ProductCard = ({
   minQuantity = 1,
   maxQuantity = 10,
   showProductCount = true ,
+  showDescription = true,
+  showOldPrice = true,
   showPrice = true, 
   showButton = true,
   buttonText = 'Add to Cart',
@@ -43,8 +45,8 @@ const ProductCard = ({
   isSale = false,
   showDiscount = false,
   discountText = 'OFF',
-  linkToItem = true,
   imageClass =  defaultImageClass,
+  containerClass='',
   cardHeight }) => {
     const [quantity, setQuantity] = useState(1);
 
@@ -61,7 +63,6 @@ const ProductCard = ({
   };
 
   const onClickHandler = ()=>{
-    console.log('Clicked!')
     let buyingOptions ={};
     for (let catrgory in productData.buyingOptions){
       buyingOptions[catrgory] = productData.buyingOptions[catrgory][0]
@@ -83,7 +84,7 @@ const ProductCard = ({
 
   return (
     productData && <div 
-    className="card mx-auto cursor-pointer" style={{height:cardHeight}}>
+    className={`card mx-auto cursor-pointer ${containerClass}`} style={{height:cardHeight}}>
       {(productData.discount && showDiscount) && <button 
         className="absolute top-4 left-4 px-2 py-1 text-xs rounded-md bg-red-950 text-white">
         {`${Math.floor(100*(1-productData.price/productData.originalPrice))}% ${discountText}`}
@@ -99,10 +100,10 @@ const ProductCard = ({
       <div  onClick={onClick}>
       <h4 className="font-bold text-primary text-lg max-sm:text-base mt-2 mx-auto">{productData.title}</h4>
       <hr className='mb-2 mt-0 mx-auto w-2/3 border-b' />
-      <p className="text-gray-500 text-sm">{productData.description}</p>
+      {showDescription &&<p className="text-gray-500 text-sm">{productData.description}</p>}
       </div>
       {showPrice && <div  onClick={onClick} className="mt-4 mx-auto flex justify-center">
-        {productData.originalPrice &&
+        {(productData.originalPrice && showOldPrice) &&
         <div className="relative w-fit mx-auto max-sm:text-xs">
           {isSale &&  <SaleIcon />}
           <p className="line-through text-gray-500">${productData.originalPrice}</p>
