@@ -117,6 +117,7 @@ const ProductCard = ({
                   onClick={onClickHandler}  className="btn-primary mx-2">{buttonText}</Button>
                   <div className="flex w-fit items-center">
                       <IconButton 
+                       title='הורדת פריט'
                       onClick={handleDecreaseQuantity} 
                       disabled={quantity <= minQuantity} 
                       sx = {{paddingX:'0.5em'}}
@@ -133,6 +134,7 @@ const ProductCard = ({
                         // className="mx-2"
                       />
                       <IconButton 
+                       title='הוספת פריט'
                       onClick={handleIncreaseQuantity} 
                       disabled={quantity >= maxQuantity} 
                       sx = {{paddingX:'0.5em'}}

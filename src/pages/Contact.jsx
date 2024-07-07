@@ -24,7 +24,8 @@ const Contact = () => {
   return (
     <div className="pageContainer max-sm:p-0">
       <div className='flex justify-center'>
-            <Logo />
+            {/* <Logo /> */}
+            {GadgetNestLogo()}
       </div>
 
       {/* <div className='testingMUI items-center my-8 py-4 bg-orange-200/50 rounded-lg w-full'>
@@ -42,7 +43,6 @@ const Contact = () => {
         </div>
 
       </div> */}
-
       <div className='mx-auto mb-4 p-4 w-3/4 fade-in max-sm:w-11/12 max-sm:px-0'>
         <form className="flex flex-col gap-4 px-12 py-8 rounded-2xl border bg-primary-yellow/70 max-sm:rounded-none max-sm:px-4">
             <div className="text-center m-auto">
@@ -69,3 +69,27 @@ const Contact = () => {
 };
 
 export default Contact;
+
+
+const GadgetNestLogo = () => {
+  return (
+    <svg width="300" height="100" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 100">
+      <g fill="none" stroke="#FF6F61" strokeWidth="2">
+        <path d="M100,20 Q60,60 100,100 Q140,60 100,20" />
+        <path d="M100,20 Q80,40 100,60 Q120,40 100,20" />
+        <path d="M100,60 Q70,90 100,120 Q130,90 100,60" transform="translate(0, -40)" />
+        <path d="M100,60 Q90,70 100,80 Q110,70 100,60" transform="translate(0, -40)" />
+        <path d="M100,100 Q130,140 100,180 Q70,140 100,100" transform="translate(0, -60)" />
+      </g>
+      <text 
+        x="150" 
+        y="65" 
+        fontFamily="'Segoe UI', Tahoma, Geneva, Verdana, sans-serif" 
+        fontWeight="bold" 
+        fill="#FF6F61" 
+        fontSize="24">
+        GadgetNest
+      </text>
+    </svg>
+  );
+};

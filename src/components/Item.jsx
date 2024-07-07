@@ -85,6 +85,7 @@ const Item = ({productData=productInfo[0] ,maxQuantity=10, minQuantity=1}) => {
           <Typography variant="body1" className="mb-2">Quantity</Typography>
           <div className="flex justify-center items-center mb-4">
             <IconButton 
+            title='הורדת פריט'
             onClick={handleDecreaseQuantity} 
             disabled={quantity <= minQuantity} 
             sx = {{paddingX:'1em'}}
@@ -99,6 +100,7 @@ const Item = ({productData=productInfo[0] ,maxQuantity=10, minQuantity=1}) => {
               className="mx-2"
             />
             <IconButton 
+             title='הוספת פריט'
             onClick={handleIncreaseQuantity} 
             disabled={quantity >= maxQuantity} 
             sx = {{paddingX:'1em'}}

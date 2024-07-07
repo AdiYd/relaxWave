@@ -30,7 +30,7 @@ const homeContent = (navigate, width)=><div className="pageContainer max-sm:px-0
 
 <section className="mb-12 max-sm:px-8">
   <h2 className="text-2xl font-bold text-primary mb-4">Our Mission</h2>
-  <p className="text-lg text-neutral-dark">
+  <p className=" text-neutral-dark">
     At RelaxWave, we are dedicated to enhancing your well-being through innovative relaxation products that blend modern technology with timeless relaxation techniques. Our mission is to help you find tranquility and relief from the stresses of everyday life.
   </p>
 </section>
@@ -98,13 +98,13 @@ const homeContent = (navigate, width)=><div className="pageContainer max-sm:px-0
 <section className="mb-12 max-sm:px-4">
   <h2 className="sectionTitle">Customer Testimonials</h2>
   <div className="bg-white p-6 rounded-lg shadow-md">
-    <blockquote className="text-lg text-neutral-dark italic border-l-4 border-primary pl-4">
+    <blockquote className=" text-neutral-dark italic border-l-4 border-primary pl-4">
       "The RelaxWave Massager has been a lifesaver! I use it daily to relieve tension in my neck and shoulders."
     </blockquote>
     <p className="mt-2 text-right text-neutral-dark">- Sarah M.</p>
   </div>
   <div className="bg-white p-6 rounded-lg shadow-md mt-4">
-    <blockquote className="text-lg text-neutral-dark italic border-l-4 border-primary pl-4">
+    <blockquote className=" text-neutral-dark italic border-l-4 border-primary pl-4">
       "The CalmWave Light Projector has transformed my evenings. It's like bringing the ocean into my living room."
     </blockquote>
     <p className="mt-2 text-right text-neutral-dark">- John D.</p>
@@ -112,8 +112,8 @@ const homeContent = (navigate, width)=><div className="pageContainer max-sm:px-0
 </section>
 
 <section className="bg-primary/90 text-primary-white fill-primary-white p-6 text-center border rounded-2xl w-4/5 mx-auto max-sm:w-full max-sm:px-4 max-sm:border-none max-sm:rounded-none">
-  <div className="flex items-center justify-center gap-8 mb-8 max-sm:gap-4 max-sm:flex-col">
-      <FontAwesomeIcon className='shake text-orange-400' icon={faBell} size='xl' color='inherit' />
+  <div className="items-center justify-center gap-8 mb-8 max-sm:gap-4">
+      <FontAwesomeIcon className='shake mb-4 text-orange-400' icon={faBell} size='xl' color='inherit' />
      <h2 className="text-xl">🎁  &nbsp; Subscribe for Sales and Promotions  &nbsp; 🎉</h2>
   </div>
   <form className="flex flex-col md:items-center md:space-x-4 max-sm:flex-col">
