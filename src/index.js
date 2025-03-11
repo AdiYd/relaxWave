@@ -1,16 +1,21 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './style/App.css';
-import './style/style.css';
+import { ConfigProvider } from 'antd';
 import App from './App';
-import { ThemeProvider } from '@mui/material/styles';
-import {colorThemeDark, inputTheme, themeFull} from './theme';
+import './style/index.css';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <ThemeProvider theme={themeFull}>
+    <ConfigProvider
+      theme={{
+        token: {
+          colorPrimary: '#1890ff',
+          borderRadius: 6,
+        },
+      }}
+    >
       <App />
-    </ThemeProvider>
-  </React.StrictMode>,
+    </ConfigProvider>
+  </React.StrictMode>
 );

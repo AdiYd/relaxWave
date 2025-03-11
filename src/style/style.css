@@ -1,9 +1,12 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-.btn-primary {
-    @apply bg-primary-light text-primary-white shadow-md font-medium py-2 px-2 rounded hover:bg-primary;
+
+@layer components {
+  .btn-primary {
+    @apply bg-primary-light text-white shadow-md font-medium py-2 px-2 rounded hover:bg-primary;
     font-family: 'Open Sans', sans-serif;
+  }
 }
 
 #navbar {
@@ -17,8 +20,9 @@
 #navbar a {
     z-index: 52;
 }
+
 .card {
-    @apply flex flex-col h-full rounded-md bg-neutral-100/80 max-sm:px-2 p-4 overflow-y-clip relative justify-between cursor-default max-w-sm w-fit text-center;
+    @apply flex flex-col h-full rounded-md bg-neutral/80 max-sm:px-2 p-4 overflow-y-clip relative justify-between cursor-default max-w-sm w-fit text-center;
 }
     
 .card_frame {

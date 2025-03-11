@@ -2,128 +2,147 @@ import React from 'react';
 import ProductCard from '../components/ProductCard';
 import products from '../assets/json/productData.json';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBell, faGift, faL } from '@fortawesome/free-solid-svg-icons';
+import { faBell, faSpa, faMoon, faHeart, faLeaf } from '@fortawesome/free-solid-svg-icons';
 import { useNavigate } from 'react-router-dom';
-import useWindowDimensions from '../assets/useWindowDimensions';
 import { SwiperCarousel } from '../components/Slider/Slider';
+import { Layout, Card, Typography, Button, Row, Col } from 'antd';
 
+const { Content } = Layout;
+const { Title, Text } = Typography;
+
+const FeatureCard = ({ icon, title, description }) => (
+  <Card hoverable className="h-full transform transition-all duration-300 hover:scale-105">
+    <div className="flex flex-col items-center text-center gap-4">
+      <FontAwesomeIcon icon={icon} className="text-4xl text-primary-orange" />
+      <Title level={5} className="font-bold text-primary">
+        {title}
+      </Title>
+      <Text className="text-neutral-dark">
+        {description}
+      </Text>
+    </div>
+  </Card>
+);
 
 const Home = () => {
   const navigate = useNavigate();
-  const {width} = useWindowDimensions();
+  
+  const features = [
+    {
+      icon: faSpa,
+      title: "הרמוניה מושלמת",
+      description: "מוצרים שנבחרו בקפידה להביא שלווה ורוגע לחיי היומיום שלכם"
+    },
+    {
+      icon: faMoon,
+      title: "שינה איכותית",
+      description: "פתרונות מתקדמים לשיפור איכות השינה והרגעה לפני השינה"
+    },
+    {
+      icon: faHeart,
+      title: "איזון גוף-נפש",
+      description: "מוצרים המשלבים טכנולוגיה מתקדמת עם שיטות הרגעה מסורתיות"
+    },
+    {
+      icon: faLeaf,
+      title: "חיים בריאים",
+      description: "פתרונות טבעיים ובריאים להפחתת מתח ושיפור איכות החיים"
+    }
+  ];
+
   return (
-    <div className="">
-        {homeContent(navigate, width)}
-    </div>
+    <Layout className="bg-transparent">
+      <Content>
+        {/* Hero Section */}
+        <div className="relative h-screen flex items-center justify-center bg-gradient-to-r from-primary/10 to-secondary/10">
+          <div className="text-center max-w-4xl mx-auto px-4">
+            <Title level={1} className="mb-6 text-primary">
+              גלו שלווה בכל רגע
+            </Title>
+            <Text className="text-lg mb-8 text-neutral-dark">
+              מוצרי הרגעה ורוגע איכותיים שיעזרו לכם למצוא את האיזון המושלם בחיי היומיום
+            </Text>
+            <Button 
+              type="primary" 
+              size="large"
+              onClick={() => navigate('/products')}
+              className="bg-secondary hover:bg-secondary/90"
+            >
+              גלו את המוצרים שלנו
+            </Button>
+          </div>
+        </div>
+
+        {/* Features Section */}
+        <div className="py-16 bg-neutral">
+          <div className="max-w-7xl mx-auto px-4">
+            <Title level={2} className="text-center mb-12 text-primary">
+              למה לבחור בנו?
+            </Title>
+            <Row gutter={[24, 24]}>
+              {features.map((feature, index) => (
+                <Col key={index} xs={24} sm={12} lg={6}>
+                  <FeatureCard {...feature} />
+                </Col>
+              ))}
+            </Row>
+          </div>
+        </div>
+
+        {/* Featured Products */}
+        <div className="py-16">
+          <div className="max-w-7xl mx-auto px-4">
+            <Title level={2} className="text-center mb-12 text-primary">
+              המוצרים המובילים שלנו
+            </Title>
+            <Row gutter={[24, 24]}>
+              {products.slice(0, 4).map((product, index) => (
+                <Col key={index} xs={24} sm={12} lg={6}>
+                  <ProductCard productData={product} />
+                </Col>
+              ))}
+            </Row>
+          </div>
+        </div>
+
+        {/* Newsletter Section */}
+        <div className="py-12 mb-8">
+          <Card className="bg-primary/90 text-white max-w-4xl mx-auto">
+            <div className="text-center mb-8">
+              <FontAwesomeIcon className="text-4xl text-primary-orange mb-4 animate-bounce" icon={faBell} />
+              <Title level={3} className="text-white mb-4">
+                הצטרפו למועדון ההטבות שלנו
+              </Title>
+              <Text className="text-white">
+                קבלו עדכונים על מבצעים חדשים ומוצרים חדשים
+              </Text>
+            </div>
+            <div className="flex flex-col md:flex-row items-center justify-center gap-4">
+              <input
+                type="text"
+                placeholder="שם"
+                className="w-full md:w-1/3 p-3 rounded-lg focus:ring-2 focus:ring-primary-orange"
+              />
+              <input
+                type="email"
+                placeholder='דוא"ל'
+                className="w-full md:w-1/3 p-3 rounded-lg focus:ring-2 focus:ring-primary-orange"
+              />
+              <Button
+                type="primary"
+                size="large"
+                className="w-full md:w-auto bg-secondary hover:bg-secondary/90"
+              >
+                הרשמה
+              </Button>
+            </div>
+          </Card>
+        </div>
+      </Content>
+    </Layout>
   );
 };
 
 export default Home;
-
-
-
-const homeContent = (navigate, width)=><div className="pageContainer max-sm:px-0">
-<header className="text-center mb-8 mt-4 fade-in">
-  <h1  className="title border-b ">RelaxWave</h1>
-  <h2 className="mt-4 text-xl">Your gateway to ultimate relaxation and rejuvenation</h2>
-</header>
-
-<section className="mb-12 max-sm:px-8">
-  <h2 className="text-2xl font-bold text-primary mb-4">Our Mission</h2>
-  <p className=" text-neutral-dark">
-    At RelaxWave, we are dedicated to enhancing your well-being through innovative relaxation products that blend modern technology with timeless relaxation techniques. Our mission is to help you find tranquility and relief from the stresses of everyday life.
-  </p>
-</section>
-
-<section className="mb-12 max-sm:px-2">
-  <h2 className="text-2xl font-bold text-primary mb-4">Featured Products</h2>
-  <div className="flex flex-wrap justify-around justify-items-center gap-4">
-  <div className='grid grid-cols-3 gap-8 max-sm:grid-cols-2 max-sm:gap-2'>
-    {products.map((item, index)=>(
-      item.id <41 && <ProductCard  
-        key={index}
-        buttonText='View Item'
-        showPrice = {false} 
-        onBtnClick={()=>{navigate(`products/${item.title}`)}}
-        imageClass='w-5/6 max-h-56 mx-auto rounded-full shadow-md object-cover'
-        showProductCount={false} 
-        isSale={true} showDiscount={item.id === 20} productData={item} />
-    ))}
-    </div>
-  </div>
-</section>
-
-<section className="mb-12 max-sm:px-8">
-      <h2 className="text-2xl font-bold text-primary text-center mb-4">Special discounts offers</h2>
-      <div className="flex relative items-center my-8 justify-around flex-wrap gap-4">
-      <div className='w-5/6 mx-auto max-sm:w-full'>     
-        <SwiperCarousel >
-          {products.map((item, index)=>(
-              <ProductCard  
-                key={index}
-                buttonText='View Item'
-                showPrice = {true} 
-                showDescription= {false}
-                containerClass='w-72 card_frame'
-                onBtnClick={()=>{navigate(`products/${item.title}`)}}
-                imageClass='w-full max-h-36 mx-auto shadow-md object-cover'
-                showProductCount={false} 
-                isSale={false} showDiscount={item.id === 20} productData={item} />
-           ))}
-          {/* <ProductCard
-            buttonText='View Item'
-            showPrice = {false} 
-            onBtnClick={()=>{navigate(`products/${products[9].title}`)}}
-            imageClass='w-5/6 max-h-56 mx-auto rounded-full shadow-md object-cover' 
-            showProductCount={false} showDiscount={true}
-            productData={products[9]} />
-          <ProductCard
-          buttonText='View Item' 
-          showPrice = {false}         
-          onBtnClick={()=>{navigate(`products/${products[7].title}`)}}
-          imageClass='w-5/6 max-h-56 mx-auto rounded-full shadow-md object-cover'  
-          showProductCount={false} 
-          showDiscount={true}
-          productData={products[7]} /> */}
-        </SwiperCarousel>
-      </div>
-    </div>
-  </section>
-
-
-<section className="mb-12 max-sm:px-4">
-  <h2 className="sectionTitle">Customer Testimonials</h2>
-  <div className="bg-white p-6 rounded-lg shadow-md">
-    <blockquote className=" text-neutral-dark italic border-l-4 border-primary pl-4">
-      "The RelaxWave Massager has been a lifesaver! I use it daily to relieve tension in my neck and shoulders."
-    </blockquote>
-    <p className="mt-2 text-right text-neutral-dark">- Sarah M.</p>
-  </div>
-  <div className="bg-white p-6 rounded-lg shadow-md mt-4">
-    <blockquote className=" text-neutral-dark italic border-l-4 border-primary pl-4">
-      "The CalmWave Light Projector has transformed my evenings. It's like bringing the ocean into my living room."
-    </blockquote>
-    <p className="mt-2 text-right text-neutral-dark">- John D.</p>
-  </div>
-</section>
-
-<section className="bg-primary/90 text-primary-white fill-primary-white p-6 text-center border rounded-2xl w-4/5 mx-auto max-sm:w-full max-sm:px-4 max-sm:border-none max-sm:rounded-none">
-  <div className="items-center justify-center gap-8 mb-8 max-sm:gap-4">
-      <FontAwesomeIcon className='shake mb-4 text-orange-400' icon={faBell} size='xl' color='inherit' />
-     <h2 className="text-xl">🎁  &nbsp; Subscribe for Sales and Promotions  &nbsp; 🎉</h2>
-  </div>
-  <form className="flex flex-col md:items-center md:space-x-4 max-sm:flex-col">
-    <div className="flex items-center justify-around w-full max-sm:flex-col">
-        <input type="name" required placeholder="Name" className=" focus-visible:outline-primary-orange text-center inputField my-2 w-2/5 max-sm:w-4/5 max-sm:mx-auto" />
-        <input type="email" required placeholder="Email" className=" focus-visible:outline-primary-orange text-center inputField my-2 w-2/5 max-sm:w-4/5 max-sm:mx-auto" />
-        <button className="cool-button my-2 text-sm h-min p-2 max-sm:w-4/5 max-sm:m-auto">Subscribe</button>
-    </div>
-    <label className="flex justify-center my-4 items-center">
-      <input type="checkbox" defaultChecked className="mr-2" />
-      Update me with new products
-    </label>
-  </form>
-</section>
-</div>
 
 

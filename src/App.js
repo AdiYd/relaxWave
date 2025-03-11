@@ -1,7 +1,6 @@
-
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes, useParams } from 'react-router-dom';
-import Header from './components/Header';
+import Header from './components/HeaderMui';
 import Footer from './components/Footer';
 import Home from './pages/Home';
 import About from './pages/About';
@@ -10,7 +9,6 @@ import Cart from './pages/Cart';
 import Contact from './pages/Contact';
 import CartProvider from './context/CartContext';
 import LegalPage from './pages/LegalPage';
-import HeaderMui from './components/HeaderMui';
 import products from './assets/json/productData.json';
 
 export const debug = (...args)=>{
@@ -58,8 +56,8 @@ const App = () => {
   return (
     <CartProvider>
       <Router>
-        <HeaderMui />
-        <main className="flex-grow relative" style={{minHeight:'75vh'}}>
+        <Header />
+        <main className="flex-grow relative pt-16" style={{minHeight:'75vh'}}>
           <Routes>
             <Route path='*' index element={<Home />} />
             <Route path="/" element={<Home />} />

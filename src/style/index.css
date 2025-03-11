@@ -1,6 +1,46 @@
+@import url('https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700&display=swap');
+@import '~antd/dist/reset.css';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  .glass-effect {
+    @apply backdrop-blur-md bg-white/70 shadow-lg;
+  }
+  
+  .hover-scale {
+    @apply transform transition-all duration-300 hover:scale-105;
+  }
+  
+  .card-hover {
+    @apply transition-all duration-300 hover:shadow-xl hover:-translate-y-2;
+  }
+  
+  .gradient-text {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary via-secondary to-accent;
+  }
+}
+
+body {
+  font-family: 'Heebo', sans-serif;
+  @apply bg-gradient-to-br from-white to-gray-50;
+}
+
+.rtl {
+  direction: rtl;
+  text-align: right;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
 
 #root {
   @apply w-full max-sm:w-auto

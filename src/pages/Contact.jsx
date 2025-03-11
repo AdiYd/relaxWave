@@ -1,25 +1,23 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { Button, Typography, Card } from 'antd';
+import { WhatsAppOutlined } from '@ant-design/icons';
 import { Logo } from '../components/Header';
 import contact from '../assets/json/contact.json';
-import { Button } from '@mui/material';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faWhatsapp } from '@fortawesome/free-brands-svg-icons';
-import {StyledContainer, Carousel, StyledBox, StyledMenu } from '../components/MUI';
-import { SwiperCarousel } from '../components/Slider/Slider';
+
+const { Title, Text } = Typography;
 
 export const ContactUs = ({data, whatsApp = false})=>(
-  <section className="bg-primary-white text-primary p-6 text-center rounded-lg w-full mx-auto">
+  <Card className="bg-primary-white text-primary p-6 text-center rounded-lg w-full mx-auto">
       <Link to={data.linkTo} >
       <h3 className="text-2xl font-semibold text-primary mb-4 hover:text-blue-600">{data.title}</h3>
       </Link>
       <p className="text-lg mb-2">{data.address}</p>
       <p className="text-lg mb-6">{data.phone}</p>
-      {whatsApp && <FontAwesomeIcon className='cursor-pointer hover:text-green-600' 
-      icon={faWhatsapp} size='2xl' color='#25D366' />}
-</section>
+      {whatsApp && <WhatsAppOutlined className='cursor-pointer hover:text-green-600' 
+      style={{ fontSize: '24px', color: '#25D366' }} />}
+</Card>
 )
-
 
 const Contact = () => {
   return (
@@ -69,7 +67,6 @@ const Contact = () => {
 };
 
 export default Contact;
-
 
 const GadgetNestLogo = () => {
   return (

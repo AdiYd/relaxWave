@@ -1,8 +1,8 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart, faLightbulb, faGlobe, faSpa, faBed, faBrain, faLeaf, faStar, faSmile, faRecycle } from '@fortawesome/free-solid-svg-icons';
-import aboutContent from '../assets/json/about.json';
+import aboutContent from '../assets/json/About.json';
 import contact from '../assets/json/contact.json';
 import { ContactUs } from './Contact';
 

@@ -1,6 +1,7 @@
-import React, { useEffect, useRef, useState } from 'react';
-import {TextField, InputLabel,Checkbox, FormControlLabel, Grid, FormControl, Select,MenuItem, Button, Box, Typography, Autocomplete} from '@mui/material';
-import { styled } from '@mui/system';
+import React, { useState } from 'react';
+import { Form, Input, Checkbox, Button, Typography, AutoComplete, Space } from 'antd';
+
+const { Title } = Typography;
 
 const citiesInIsrael = [
         "ירושלים",
@@ -163,201 +164,163 @@ const citiesInIsrael = [
 
 const phonePrefixes = ["052", "054", "050", "053", "055"];
 
-const RTLBox = styled(Box)({
-    direction: 'rtl',
-    textAlign: 'right'
+const AddressForm = () => {
+  const [form] = Form.useForm();
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phoneNumber: '',
+    country: 'ישראל',
+    city: 'תל אביב - יפו',
+    address: '',
+    buildingNumber: '',
+    homeNumber: '',
+    entrance: '',
+    sendInvoice: true,
+    receiveNews: true
   });
-  
-  const AddressForm = () => {
-    const [formData, setFormData] = useState({
-      name: '',
-      email: '',
-    //   phonePrefix: '',
-      phoneNumber: '',
-      country: 'ישראל',
-      city: 'תל אביב - יפו',
-      address: '',
-      buildingNumber: '',
-      homeNumber: '',
-      entrance: '',
-      sendInvoice: true,
-      receiveNews: true
-    });
 
-    const handleInputChange = (e, newValue) => {
-      const { name, value, type, checked } = e.target;
-      const fieldValue = type === 'checkbox' ? checked : value;
-        
-      setFormData({
-        ...formData,
-        [name]: newValue || fieldValue
-      });
-    };
-  
-    const handleSubmit = (e) => {
-      e.preventDefault();
-      const userInfo = { ...formData };
-      console.log(userInfo);
-    };
-  
-    return (
-      <RTLBox component="form" onSubmit={handleSubmit} sx={{ maxWidth: 600, mx: 'auto', p: 2, textAlign:'center', borderRadius: 1, boxShadow: 3 }}>
-        <Typography  variant="h5" component="h5" gutterBottom>פרטי משלוח </Typography>
-        <TextField
-          label="שם לקוח"
-          name="name"
-          value={formData.name}
-          onChange={handleInputChange}
-          required
-          fullWidth
-          margin="normal"
+  const handleInputChange = (name, value) => {
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
+  const handleSubmit = (values) => {
+    console.log(values);
+  };
+
+  return (
+    <Form
+      form={form}
+      layout="vertical"
+      initialValues={formData}
+      onFinish={handleSubmit}
+      className="max-w-[600px] mx-auto p-4 rtl"
+      style={{
+        direction: 'rtl',
+        textAlign: 'right',
+        borderRadius: '8px',
+        boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)'
+      }}
+    >
+      <Title level={5} style={{ textAlign: 'center', marginBottom: 24 }}>
+        פרטי משלוח
+      </Title>
+
+      <Form.Item
+        label="שם לקוח"
+        name="name"
+        rules={[{ required: true, message: 'נא להזין שם' }]}
+      >
+        <Input onChange={(e) => handleInputChange('name', e.target.value)} />
+      </Form.Item>
+
+      <Form.Item
+        label='דוא"ל'
+        name="email"
+        rules={[
+          { required: true, message: 'נא להזין כתובת דואר אלקטרוני' },
+          { type: 'email', message: 'כתובת דואר אלקטרוני לא תקינה' }
+        ]}
+      >
+        <Input 
+          dir="ltr" 
+          onChange={(e) => handleInputChange('email', e.target.value)} 
         />
-        <TextField
-          label='דוא"ל'
-          name="email"
-          type="email"
-          sx={{textAlign: 'left'}}
-          value={formData.email}
-          onChange={handleInputChange}
-          required
-          fullWidth
-          margin="normal"
-          inputProps={{ style: { direction: 'ltr' } }}
+      </Form.Item>
+
+      <Form.Item
+        label="מספר טלפון"
+        name="phoneNumber"
+        rules={[{ required: true, message: 'נא להזין מספר טלפון' }]}
+      >
+        <Input onChange={(e) => handleInputChange('phoneNumber', e.target.value)} />
+      </Form.Item>
+
+      <Form.Item
+        label="מדינה"
+        name="country"
+      >
+        <Input readOnly />
+      </Form.Item>
+
+      <Form.Item
+        label="עיר"
+        name="city"
+        rules={[{ required: true, message: 'נא לבחור עיר' }]}
+      >
+        <AutoComplete
+          options={citiesInIsrael.map(city => ({ value: city }))}
+          onChange={(value) => handleInputChange('city', value)}
+          filterOption={(inputValue, option) =>
+            option.value.toString().indexOf(inputValue) !== -1
+          }
         />
-          <TextField
-              label="מספר טלפון"
-              name="phoneNumber"
-              value={formData.phoneNumber}
-              onChange={handleInputChange}
-              required
-              fullWidth
-            />
-        {/* <Grid container spacing={2} margin="normal">
-          <Grid item xs={8}>
-            <TextField
-              label="מספר טלפון"
-              name="phoneNumber"
-              value={formData.phoneNumber}
-              onChange={handleInputChange}
-              required
-              fullWidth
-            />
-          </Grid>
-          <Grid item xs={4}>
-            <FormControl fullWidth>
-              <InputLabel>קידומת</InputLabel>
-              <Select
-                label="קידומת"
-                name="phonePrefix"
-                value={formData.phonePrefix}
-                onChange={handleInputChange}
-                required
-              >
-                {phonePrefixes.map((prefix) => (
-                  <MenuItem key={prefix} value={prefix}>
-                    {prefix}
-                  </MenuItem>
-                ))}
-              </Select>
-            </FormControl>
-          </Grid>
-        </Grid> */}
-        <TextField
-          label="מדינה"
-          name="country"
-          value={formData.country}
-          onChange={handleInputChange}
-          required
-          fullWidth
-          margin="normal"
-          InputProps={{ readOnly: true }}
-        />
-        <Autocomplete
-          options={citiesInIsrael}
-          getOptionLabel={(option) => option}
-          value={formData.city}
-          onChange={(event, newValue) => handleInputChange({ target: { name: 'city', value: newValue } }, newValue)}
-          renderInput={(params) => (
-            <TextField
-              {...params}
-              label="עיר"
-              name="city"
-              onChange={handleInputChange}
-              required
-              fullWidth
-              margin="normal"
-            />
-          )}
-        />
-        <TextField
-          label="כתובת"
-          name="address"
-          value={formData.address}
-          onChange={handleInputChange}
-          required
-          fullWidth
-          margin="normal"
-        />
-        <div className='flex justify-between gap-4'>
-        <TextField
+      </Form.Item>
+
+      <Form.Item
+        label="כתובת"
+        name="address"
+        rules={[{ required: true, message: 'נא להזין כתובת' }]}
+      >
+        <Input onChange={(e) => handleInputChange('address', e.target.value)} />
+      </Form.Item>
+
+      <Space style={{ width: '100%', justifyContent: 'space-between' }}>
+        <Form.Item
           label="מספר בניין"
           name="buildingNumber"
-          value={formData.buildingNumber}
-          onChange={handleInputChange}
-          margin="normal"
-        />
-        <TextField
+        >
+          <Input onChange={(e) => handleInputChange('buildingNumber', e.target.value)} />
+        </Form.Item>
+
+        <Form.Item
           label="מספר בית"
           name="homeNumber"
-          value={formData.homeNumber}
-          onChange={handleInputChange}
-          required
-          margin="normal"
-        />
-        <TextField
+          rules={[{ required: true, message: 'נא להזין מספר בית' }]}
+        >
+          <Input onChange={(e) => handleInputChange('homeNumber', e.target.value)} />
+        </Form.Item>
+
+        <Form.Item
           label="כניסה"
           name="entrance"
-          value={formData.entrance}
-          onChange={handleInputChange}
-          fullWidth
-          margin="normal"
-        />
-        </div>
-        <div className='flex'>
-        <FormControlLabel
-          control={
-            <Checkbox
-              name="sendInvoice"
-              checked={formData.sendInvoice}
-              onChange={handleInputChange}
-            />
-          }
-          label="קבלת חשבונית במייל"
-        />
-        </div>
-        <div className='flex'>
-        <FormControlLabel
-        // sx={{marginX:'auto'}}
-          control={
-            <Checkbox
-              name="receiveNews"
-              checked={formData.receiveNews}
-              onChange={handleInputChange}
-            />
-          }
-          label="אישור קבלת חדשות ומבצעים"
-        />
-        </div>
-        <Button 
-          variant="contained" 
-          color="secondary" 
-          type="submit" 
-          sx={{ mt: 2, width: '66%', borderRadius: '4px', marginY:'auto', alignSelf:'center' }}
+        >
+          <Input onChange={(e) => handleInputChange('entrance', e.target.value)} />
+        </Form.Item>
+      </Space>
+
+      <Form.Item
+        name="sendInvoice"
+        valuePropName="checked"
+      >
+        <Checkbox onChange={(e) => handleInputChange('sendInvoice', e.target.checked)}>
+          קבלת חשבונית במייל
+        </Checkbox>
+      </Form.Item>
+
+      <Form.Item
+        name="receiveNews"
+        valuePropName="checked"
+      >
+        <Checkbox onChange={(e) => handleInputChange('receiveNews', e.target.checked)}>
+          אישור קבלת חדשות ומבצעים
+        </Checkbox>
+      </Form.Item>
+
+      <Form.Item style={{ textAlign: 'center' }}>
+        <Button
+          type="primary"
+          htmlType="submit"
+          style={{ width: '66%', marginTop: 16 }}
         >
           שלח
         </Button>
-      </RTLBox>
-    );
-  };
-  
-  export default AddressForm;
+      </Form.Item>
+    </Form>
+  );
+};
+
+export default AddressForm;     
